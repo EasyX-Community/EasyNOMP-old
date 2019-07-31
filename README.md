@@ -88,17 +88,17 @@ http://www.gnu.org/licenses/gpl-2.0.html
 -------
 ### Install Pool
 
-Install instructions are in the directory [docs/README.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/INSTALL.md)
+Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/INSTALL.md)
 
 -------
 ### Configure Pool
 
-Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/leshacat/EasyNOMP/wiki
+Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/EasyX-Community/EasyNOMP/wiki
 
 -------
 ### Run in Docker
 
-Docker instructions are in in the directory [docs/README.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/DOCKER.md)
+Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/DOCKER.md)
 
 -------
 ### Changelog

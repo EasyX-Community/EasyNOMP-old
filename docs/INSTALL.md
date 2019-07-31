@@ -36,6 +36,7 @@ nvm use v8.1.4
 npm update -g
 npm install -g pm2@latest
 npm install -g npm@latest
+npm install
 ```
 
 -------
