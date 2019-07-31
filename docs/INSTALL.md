@@ -51,11 +51,10 @@ redis-cli FLUSHALL
 ```
 git clone https://github.com/leshacat/EasyNOMP.git
 cd BootNOMP
-pm2 init
 npm install
 npm update
 npm audit fix
-pm2 start init.js -i max --watch --name pool
+pm2 start /path/to/init.js -i max --name pool
 ```
 
 -------
