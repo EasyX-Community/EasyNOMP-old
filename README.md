@@ -5,7 +5,7 @@
 -------
 
 ### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
-#### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @Shawn)
+#### Support via GitHub Issue Tracker and Discord: https://discord.gg/RgSKMCx (Join #easyx-pool and ask @Shawn)
 #### Visit the EasyX Community website: http://www.easyx.info/
 
 -------
@@ -58,7 +58,7 @@ Adjust the "paymentInterval" to 120 seconds or less, and set minimumPayment to 0
 | **✓** | **SSL Enabled Dashboard** / To keep your miners anonymous &amp; secure! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @LeshaCat! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
