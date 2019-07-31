@@ -39,9 +39,7 @@ If you have work queue depth exceeded, add the following to wallet config file:
 rpcworkqueue=100
 ```
 
-***This crypto is not lost, it is still in your pool wallet.*** Once the fix is made, you can update EasyNOMP and restart the pool, and the payments should then go through.  I will push the fix to parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) when completed.
-
-**This is only a temporary fix.**
+***This crypto is not lost, it is still in your pool wallet.*** Once the fix is made, you can update EasyNOMP and restart the pool, and the payments should then go through.
 
 ***Sorry for the inconvenience!***
 
