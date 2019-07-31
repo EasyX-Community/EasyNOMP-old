@@ -1,0 +1,10 @@
+{
+    "name": "rapturecoin",
+    "symbol": "RAP",
+    "algorithm": "neoscrypt",
+
+    "explorerGetBlockJSON": "http://explorer.our-rapture.com/api/getrawtransaction?txid=",
+    "explorerGetBlock": "http://explorer.our-rapture.com/block/",
+    "explorerGetTX": "http://explorer.our-rapture.com/tx/"
+
+}

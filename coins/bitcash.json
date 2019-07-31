@@ -1,0 +1,9 @@
+{
+    "name": "Bitcash",
+    "symbol": "BITC",
+    "algorithm": "x16r",
+
+    "explorerGetBlockJSON": "https://bitc.easyxpool.tk:444/api/getblock?txid=",
+    "explorerGetBlock": "https://bitc.easyxpool.tk:444/block/",
+    "explorerGetTX": "https://bitc.easyxpool.tk:444/tx/"
+}

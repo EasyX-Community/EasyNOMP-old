@@ -1,0 +1,108 @@
+{
+    "enabled": false,
+    "coin": "securetag.json",
+
+    "address": "REPLACE_THIS_WITH_POOL_WALLET_ADDRESS",
+
+    "donateaddress": "SSNTwe2GgpnfErnCinNmHCSKmM3Rsp26iR",
+
+    "rewardRecipients": {
+        "REPLACE_THIS_WITH_FEE_WALLET_ADDRESS": 0.00
+    },
+
+    "reward": "POW",
+
+    "paymentProcessing": {
+        "enabled": true,
+        "paymentMode": "prop",
+        "paymentInterval": 1800,
+        "minimumPayment": 0.5,
+        "maxPerPayment": 5.00000000,
+        "daemon": {
+            "host": "127.0.0.1",
+            "port": 19001,
+            "user": "REPLACE_THIS_WITH_RPC_USER",
+            "password": "REPLACE_THIS_WITH_RPC_PASSWD"
+        }
+    },
+
+    "ports": {
+        "20010": {
+            "diff": 1,
+            "varDiff": {
+                "minDiff": 1,
+                "maxDiff": 25,
+                "targetTime": 15,
+                "retargetTime": 60,
+                "variancePercent": 30
+            }
+        },
+        "20011": {
+            "diff": 25,
+            "varDiff": {
+                "minDiff": 25,
+                "maxDiff": 300,
+                "targetTime": 15,
+                "retargetTime": 60,
+                "variancePercent": 30
+            }
+        },
+	"20012": {
+            "diff": 300,
+            "varDiff": {
+                "minDiff": 300,
+                "maxDiff": 600,
+                "targetTime": 15,
+                "retargetTime": 60,
+                "variancePercent": 30
+            }
+        },
+	"20013": {
+            "diff": 600,
+            "varDiff": {
+                "minDiff": 600,
+                "maxDiff": 1200,
+                "targetTime": 15,
+                "retargetTime": 60,
+                "variancePercent": 30
+            }
+        }
+    },
+
+    "daemons": [
+        {
+            "host": "127.0.0.1",
+            "port": 19001,
+            "user": "REPLACE_THIS_WITH_RPC_USER",
+            "password": "REPLACE_THIS_WITH_RPC_PASSWD"
+        }
+    ],
+
+    "p2p": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "port": 17777,
+        "disableTransactions": true
+    },
+
+    "mposMode": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "port": 3306,
+        "user": "me",
+        "password": "mypass",
+        "database": "ltc",
+        "checkPassword": true,
+        "autoCreateWorker": false
+    },
+
+    "mongoMode": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "user": "",
+        "pass": "",
+        "database": "ltc",
+        "authMechanism": "DEFAULT"
+    }
+
+}

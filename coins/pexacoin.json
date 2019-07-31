@@ -1,0 +1,9 @@
+{
+    "name": "Pexacoin",
+    "symbol": "PEXA",
+    "algorithm": "x16r",
+
+    "explorerGetBlockJSON": "https://pexa.easyxpool.tk:451/api/getblock?txid=",
+    "explorerGetBlock": "https://pexa.easyxpool.tk:451/block/",
+    "explorerGetTX": "https://pexa.easyxpool.tk:451/tx/"
+}

@@ -1,0 +1,12 @@
+{
+    "name": "herbcoin",
+    "symbol": "HERB",
+    "algorithm": "quark",
+
+//    "peerMagic": "9170caca",
+
+    "explorerGetBlockJSON": "http://78.97.54.58:3002/api/getblock?hash=",
+    "explorerGetBlock": "http://78.97.54.58:3002//block/",
+    "explorerGetTX": "http://78.97.54.58:3002//tx/"
+
+}

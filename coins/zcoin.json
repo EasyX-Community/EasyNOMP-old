@@ -1,0 +1,6 @@
+{
+  "name": "ZCoin",
+  "symbol": "XZC",
+  "algorithm": "lyra2z",
+  "sha256DHeader" : true
+}

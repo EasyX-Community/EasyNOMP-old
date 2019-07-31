@@ -1,0 +1,9 @@
+{
+    "name": "qbiccoin",
+    "symbol": "QBIC",
+    "algorithm": "neoscrypt",
+    "explorerGetBlockJSON": "http://explorer.qbic.io:3001/api/getblock?hash=",
+    "explorerGetBlock": "http://explorer.qbic.io:3001/block/",
+    "explorerGetTX": "http://explorer.qbic.io:3001/api/getrawtransaction?txid={0}&decrypt=1",
+    "blockTime": 120
+}

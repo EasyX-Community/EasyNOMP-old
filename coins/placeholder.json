@@ -1,0 +1,9 @@
+{
+    "name": "Placeholder",
+    "symbol": "PHL",
+    "algorithm": "x16r",
+
+    "explorerGetBlockJSON": "https://phl.easyxpool.tk:446/api/getblock?txid=",
+    "explorerGetBlock": "https://phl.easyxpool.tk:446/block/",
+    "explorerGetTX": "https://phl.easyxpool.tk:446/tx/"
+}

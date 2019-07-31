@@ -1,0 +1,10 @@
+{
+    "name": "minexcoin",
+    "symbol": "MNX",
+    "algorithm": "equihash",
+    
+    "explorerGetBlockJSON": "https://minexexplorer.com/api/block/getblock?hash=",
+    "explorerGetBlock": "https://minexexplorer.com/blocks/view?hash=",
+    "explorerGetTX": "https://minexexplorer.com/transactions/view?hash="
+
+}

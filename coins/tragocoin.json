@@ -1,0 +1,9 @@
+{
+    "name": "Tragocoin",
+    "symbol": "TRAGO",
+    "algorithm": "x16r",
+
+    "explorerGetBlockJSON": "https://trago.easyxpool.tk:450/api/getblock?txid=",
+    "explorerGetBlock": "https://trago.easyxpool.tk:450/block/",
+    "explorerGetTX": "https://trago.easyxpool.tk:450/tx/"
+}

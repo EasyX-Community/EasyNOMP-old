@@ -1,0 +1,12 @@
+{
+    "name": "nexton",
+    "symbol": "NXTON",
+    "algorithm": "quark",
+
+//    "peerMagic": "9170caca",
+
+    "explorerGetBlockJSON": "https://api.chainmapper.com/NXTON/",
+    "explorerGetBlock": "https://chainmapper.com/nxton/block/",
+    "explorerGetTX": "https://chainmapper.com/nxton/tx/"
+
+}
