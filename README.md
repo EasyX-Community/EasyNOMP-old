@@ -4,14 +4,14 @@
 
 -------
 
-### EasyNOMP pool is live @ [http://miningpool.easyx.info:44420/](http://miningpool.easyx.info:44420/)
+### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
 #### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @Shawn)
 #### Visit the EasyX Community website: http://www.easyx.info/
 
 -------
 
 ### Helping give NOMP & BootNOMP new life, with some style!
-***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://miningpool.easyx.info:44420/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
+***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://easyxpool.tk/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
 
 ***1301313Y:*** _"BootNOMP is all the things great about NOMP, now with modern style and design of BootStrap 4! Having disliked the previous UI, due to cramping, little to no info displayed while what is displayed is not very helpful to users. I decided to fork a already great project, and add some stylistic touches it severely needs. I would of considered requesting pulls to the main branch, though with such heavy changes to the project, I decided a hard fork would be well suited. But if you would like to contribute, please consider looking at the original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these guys are the ones who helped get this NOMP rebirthing process started."_
 
@@ -47,18 +47,6 @@ Adjust the "paymentInterval" to 120 seconds or less, and set minimumPayment to 0
 **This is only a temporary fix.**
 
 ***Sorry for the inconvenience!***
-
--------
-### !~ NOTICE: THIS IS NOT A HOSTILE TAKEOVER ~!
-It has been posited to me that EasyNOMP is a hostile takeover of [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) or [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal).
-
-**I want to be perfectly clear, this is not a hostile takeover of either of these two projects.**
-
-EasyNOMP, BootNOMP and NOMP are preferences. The only way EasyNOMP differs from BootNOMP is the added documentation and features that the other developers refuse to accept, while the only way BootNOMP differs from NOMP is the UI redesign. All fixes, features, and patches will be shared with both [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) - provided they are features they want.
-
-**If you've installed EasyNOMP because you want the bug fixes and patches that I (LeshaCat) make, you have installed it for the wrong reason. Go install the parent projects. I will be supporting and working for them as well, and pushing the fixes, features, and patches to them as soon as they are completed - as long as they want them.**
-
-While I am open to a takeover with the original developers consent, **_I am not_** open to hostile takeovers of projects which I am friendly with and share source code. We are here (or at least I am) to help make crypto and open source **stronger.**
 
 -------
 ### Features
