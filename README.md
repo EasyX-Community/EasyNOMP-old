@@ -1,4 +1,4 @@
-# [EasyNOMP](https://github.com/leshacat/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
+# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
 ##### Making it easy to install and configure NOMP!
 ##### Current Version: v1.1.4
 
@@ -63,7 +63,7 @@ If you have work queue depth exceeded, add the following to wallet config file:
 ### Node Open Mining Portal consists of 3 main modules:
 | Project | Link |
 | ------------- | ------------- |
-| [EasyNOMP](https://github.com/leshacat/EasyNOMP.git) | https://github.com/leshacat/EasyNOMP.git |
+| [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP.git) | https://github.com/EasyX-Community/EasyNOMP.git |
 | [Stratum Pool](https://github.com/leshacat/node-stratum-pool) | https://github.com/leshacat/node-stratum-pool |
 | [Node Multihashing](https://github.com/leshacat/node-multi-hashing) | https://github.com/leshacat/node-multi-hashing |
 
@@ -103,7 +103,7 @@ Docker instructions are in in the directory [docs/README.md](https://github.com/
 -------
 ### Changelog
 
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/CHANGELOG.md)
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
@@ -165,16 +165,16 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/leshacat
 -------
 ### Screenshots
 #### Home<br />
-![Home](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/home.png)
+![Home](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/home.png)
 
 #### Pool Stats<br />
-![Pool Stats](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/poolstats.png)<br /><br />
+![Pool Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/poolstats.png)<br /><br />
 
 #### Miner Stats<br />
-![Miner Stats](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/minerstats.png)<br /><br />
+![Miner Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/minerstats.png)<br /><br />
 
 #### Block Explorer<br />
-![Block Explorer](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/blockexplorer.png)<br /><br />
+![Block Explorer](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/blockexplorer.png)<br /><br />
 
 -------
 ### Credits
@@ -182,7 +182,7 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/leshacat
 | ------------- | ------------- |
 | [foxer666](//github.com/foxer666) | How could anyone forget the original [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) dev? |
 | [1301313Y](//github.com/1301313Y) | How could anyone forget the original [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) dev? |
-| [LeshaCat](//github.com/leshacat) | How could anyone forget the original [leshacat/EasyNOMP](https://github.com/leshacat/EasyNOMP) dev?<br /> - Fixed lots of documentation, configuration, and block explorer |
+| [LeshaCat](//github.com/leshacat) | How could anyone forget the original [EasyX-Community/EasyNOMP](https://github.com/EasyX-Community/EasyNOMP) dev?<br /> - Fixed lots of documentation, configuration, and block explorer |
 | &nbsp; | &nbsp; |
 | [a2hill](//github.com/a2hill) | helped with X16r |
 | [devnulled](//github.com/devnull-ed) | helped with lyra2z, neoscrypt algo |
