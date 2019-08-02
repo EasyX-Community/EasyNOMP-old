@@ -14,8 +14,6 @@
 ### !~ DEVELOPMENT WARNING ~!
 ***_While the master branch is generally considered stable, LeshaCat is currently working on finalizing v1.1.4 and therefore the master branch will be considered unstable until our first release (v1.1.4) is finalized._***
 
-***NOTE:***  Someone please test Docker, I made a few quick changes. Will come back to it later! ~[LeshaCat](//github.com/leshacat)
-
 -------
 
 ### Helping give NOMP & BootNOMP new life, with some style!
@@ -27,6 +25,21 @@
 ***NOTE:*** If you want to help contribute, please look at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) first!<br />
 
 ***NOTE:*** _You can fork this repository by clicking "fork" in the top right._
+
+-------
+### Features
+|   | Feature | Developer(s) |
+| ------------- | ------------- | ------------- |
+| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
+| **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
+| **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **SSL Enabled Dashboard** / To keep your miners anonymous &amp; secure! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
+| **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
 
 -------
 ### !~ PAYMENT BUG WARNING ~!
@@ -44,21 +57,6 @@ Restart the wallet + pool
 ***This crypto is not lost, it is still in your pool wallet.***
 
 ***Sorry for the inconvenience!***
-
--------
-### Features
-|   | Feature | Developer(s) |
-| ------------- | ------------- | ------------- |
-| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
-| **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
-| **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **SSL Enabled Dashboard** / To keep your miners anonymous &amp; secure! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
-| **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
 
 -------
 ### Node Open Mining Portal consists of 3 main modules:
