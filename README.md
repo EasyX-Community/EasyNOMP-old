@@ -7,7 +7,9 @@
 ### EasyNOMP pool is live @ [https://easyxpool.tk/](http://easyxpool.tk/)
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
 ***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
-***Mine PEXA @ EasyXPool: https://easyxpool.tk/***<br />
+***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
+
+
 ***Support IS DISCONTINUED! I am busy as a pool operator. Please do not ask me about EasyNOMP support.***
 
 -------
