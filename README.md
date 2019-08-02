@@ -1,10 +1,10 @@
-# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
+# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/zone117x/node-open-mining-portal)
 ***Making it easy to install and configure NOMP!***<br />
 ***Current Version: v1.1.4***
 
 -------
 
-### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
+### EasyNOMP pool is live @ [https://easyxpool.tk/](http://easyxpool.tk/)
 ***Support IS DISCONTINUED! I am busy as a pool operator. Please do not ask me about EasyNOMP support.***<br />
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
 ***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
