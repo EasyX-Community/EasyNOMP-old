@@ -42,7 +42,7 @@ rpcworkqueue=100
 ```
 Restart the wallet + pool
 
-***This crypto is not lost, it is still in your pool wallet.***
+***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
 
 ***Sorry for the inconvenience!***
 
