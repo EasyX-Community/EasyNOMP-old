@@ -70,11 +70,6 @@ Restart the wallet + pool
 ***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
 
 -------
-### License
-Released under the GNU General Public License v2
-http://www.gnu.org/licenses/gpl-2.0.html
-
--------
 ### Requirements
 ***NOTE:*** _These requirements will be installed in the install section!_<br />
 * Node Version Manager
@@ -83,6 +78,11 @@ http://www.gnu.org/licenses/gpl-2.0.html
 * Process Manager 2
 * ntp
 * Coin daemon(s)
+
+-------
+### License
+Released under the GNU General Public License v2
+http://www.gnu.org/licenses/gpl-2.0.html
 
 -------
 ### Install Pool
