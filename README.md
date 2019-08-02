@@ -35,25 +35,14 @@ https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)
 https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
 
 If you encounter "Work queue depth exceeded" enter into wallet config:
-```rpcworkqueue=100
+```
+rpcworkqueue=100
 ```
 Restart the wallet + pool
 
 ***This crypto is not lost, it is still in your pool wallet.***
 
 ***Sorry for the inconvenience!***
-
--------
-### !~ NOTICE: THIS IS NOT A HOSTILE TAKEOVER ~!
-It has been posited to me that EasyNOMP is a hostile takeover of [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) or [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal).
-
-**I want to be perfectly clear, this is not a hostile takeover of either of these two projects.**
-
-EasyNOMP, BootNOMP and NOMP are preferences. The only way EasyNOMP differs from BootNOMP is the added documentation and features that the other developers refuse to accept, while the only way BootNOMP differs from NOMP is the UI redesign. All fixes, features, and patches will be shared with both [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) - provided they are features they want.
-
-**If you've installed EasyNOMP because you want the bug fixes and patches that I (LeshaCat) make, you have installed it for the wrong reason. Go install the parent projects. I will be supporting and working for them as well, and pushing the fixes, features, and patches to them as soon as they are completed - as long as they want them.**
-
-While I am open to a takeover with the original developers consent, **_I am not_** open to hostile takeovers of projects which I am friendly with and share source code. We are here (or at least I am) to help make crypto and open source **stronger.**
 
 -------
 ### Features
