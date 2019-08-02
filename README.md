@@ -118,7 +118,7 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 | ✓ | __Scrypt__ | tested with AntiLiteCoin, 1CREDIT, ArgusCoin, WAYAWOLFCOIN and many others |
 | ✓ | __SHA256__ | tested with VCOIN, don't use with BTC, no Segwit tested |
 | ✓ | __X11__ | tested with BrainCoin, CannabisCoin, AdzCoin and many others |
-| ✓ | __X16r__ | tested with RavenCoin |
+| ✓ | __X16r__ | tested with RavenCoin, PexaCoin, Placeholders, TragoCoin - Fail: BitCash |
 | ✓ | __Yescrypt__ | needs tests, though should work |
 | ✓ | __YescryptR16__ | needs tests, though should work |
 | ✓ | __YescryptR32__ | currently being tested with WaviCoin. shares work, payments unconfirmed |
