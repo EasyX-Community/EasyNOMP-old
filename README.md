@@ -28,7 +28,6 @@
 
 -------
 ### !~ PAYMENT BUG WARNING ~!
-#### THERE IS A KNOWN PAYMENT BUG: <br />
 
 https://github.com/bitcoin/bitcoin/issues/14578<br />
 https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
