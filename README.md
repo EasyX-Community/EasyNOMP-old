@@ -5,8 +5,9 @@
 -------
 
 ### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
-#### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @LeshaCat)
-#### Visit the EasyX Community website: http://www.easyx.info/
+#### Support NO LONGER GIVEN! I am busy as a pool operator. Please do not ask me about EasyNOMP support. Thank you!
+#### Visit the EasyX Community website: https://www.easyx.info/
+#### Visit the Pexa Project website: https://www.pexaproject.com/
 
 -------
 
