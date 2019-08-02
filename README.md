@@ -202,7 +202,7 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 
 ### Plz Buy Me Some Coffee?
 
-I drink about 3 pots a day... I will love you forever!
+This is my new Full-Time job and it pays nothing. I drink about 3 pots a day... I will love you forever!
 
 
 BTC: `1PvSxjrpzNXCuBHCupAGuuzeUe5DE7kB7H`
