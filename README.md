@@ -88,22 +88,22 @@ http://www.gnu.org/licenses/gpl-2.0.html
 -------
 ### Install Pool
 
-Install instructions are in the directory [docs/README.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/INSTALL.md)
+Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/INSTALL.md)
 
 -------
 ### Configure Pool
 
-Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/leshacat/EasyNOMP/wiki
+Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/EasyX-Community/EasyNOMP/wiki
 
 -------
 ### Run in Docker
 
-Docker instructions are in in the directory [docs/README.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/DOCKER.md)
+Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/DOCKER.md)
 
 -------
 ### Changelog
 
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/leshacat/EasyNOMP/blob/development/docs/CHANGELOG.md)
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
@@ -165,16 +165,16 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/leshacat
 -------
 ### Screenshots
 #### Home<br />
-![Home](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/home.png)
+![Home](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/home.png)
 
 #### Pool Stats<br />
-![Pool Stats](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/poolstats.png)<br /><br />
+![Pool Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/poolstats.png)<br /><br />
 
 #### Miner Stats<br />
-![Miner Stats](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/minerstats.png)<br /><br />
+![Miner Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/minerstats.png)<br /><br />
 
 #### Block Explorer<br />
-![Block Explorer](https://raw.githubusercontent.com/leshacat/EasyNOMP/master/docs/screenshots/blockexplorer.png)<br /><br />
+![Block Explorer](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/blockexplorer.png)<br /><br />
 
 -------
 ### Credits
