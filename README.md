@@ -5,7 +5,7 @@
 -------
 
 ### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
-#### Support NO LONGER GIVEN! I am busy as a pool operator. Please do not ask me about EasyNOMP support. Thank you!
+#### Support NO LONGER GIVEN! I am busy as a pool operator. Please do not ask me about EasyNOMP support.
 #### Visit the EasyX Community website: https://www.easyx.info/
 #### Visit the Pexa Project website: https://www.pexaproject.com/
 
