@@ -34,17 +34,12 @@ https://github.com/bitcoin/bitcoin/issues/14578<br />
 https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
 https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
 
-Please monitor those issues on GitHub. There is a temporary fix for now if you edit the pool_configs/* and change the following lines - set them to:
+If you encounter "Work queue depth exceeded" enter into wallet config:
+```rpcworkqueue=100
 ```
-"paymentInterval": 120,
-"minimumPayment": 0,
-"maxPerPayment": 2.00000000,
-```
-Adjust the "paymentInterval" to 120 seconds or less, and set minimumPayment to 0. Then set maxPerPayment to the block reward, and work way backwards if payments still stuck. Restart pool with **pm2 restart pool** after each change.
+Restart the wallet + pool
 
-***This crypto is not lost, it is still in your pool wallet.*** Once the fix is made, you can update EasyNOMP and restart the pool, and the payments should then go through.  I will push the fix to parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) when completed.
-
-**This is only a temporary fix.**
+***This crypto is not lost, it is still in your pool wallet.***
 
 ***Sorry for the inconvenience!***
 
