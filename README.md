@@ -11,6 +11,12 @@
 #### Mine PEXA @ EasyXPool: https://easyxpool.tk/
 
 -------
+### !~ DEVELOPMENT WARNING ~!
+***_While the master branch is generally considered stable, LeshaCat is currently working on finalizing v1.1.4 and therefore the master branch will be considered unstable until our first release (v1.1.4) is finalized._***
+
+***NOTE:***  Someone please test Docker, I made a few quick changes. Will come back to it later! ~[LeshaCat](//github.com/leshacat)
+
+-------
 
 ### Helping give NOMP & BootNOMP new life, with some style!
 ***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://easyxpool.tk/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
@@ -21,12 +27,6 @@
 ***NOTE:*** If you want to help contribute, please look at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) first!<br />
 
 ***NOTE:*** _You can fork this repository by clicking "fork" in the top right._
-
--------
-### !~ DEVELOPMENT WARNING ~!
-***_While the master branch is generally considered stable, LeshaCat is currently working on finalizing v1.1.4 and therefore the master branch will be considered unstable until our first release (v1.1.4) is finalized._***
-
-***NOTE:***  Someone please test Docker, I made a few quick changes. Will come back to it later! ~[LeshaCat](//github.com/leshacat)
 
 -------
 ### !~ PAYMENT BUG WARNING ~!
