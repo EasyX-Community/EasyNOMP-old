@@ -27,15 +27,15 @@ var portalConfig = JSON.parse(JSON.minify(fs.readFileSync("config.json", {encodi
 var poolConfigs;
 
 
-try {
-    require('newrelic');
-    if (cluster.isMaster)
-        logger.debug('New MASTER Relic initiated PID ${process.pid}');
-    if (cluster.isWorker)
-        logger.debug('New WORKER Relic initiated PID ${process.pid}');
-} catch (e) {
-        logger.debug('RELIC ERR: %s', JSON.stringify(e));
-}
+//try {
+//    require('newrelic');
+//    if (cluster.isMaster)
+//        logger.debug('New MASTER Relic initiated PID ${process.pid}');
+//    if (cluster.isWorker)
+//        logger.debug('New WORKER Relic initiated PID ${process.pid}');
+//} catch (e) {
+//        logger.debug('RELIC ERR: %s', JSON.stringify(e));
+//}
 
 
 //Try to give process ability to handle 100k concurrent connections

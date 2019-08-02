@@ -8,7 +8,7 @@ node_modules/
 certs/*.pem
 certs/*.crt
 certs/*.key
-logs/*.log
+logs/*
 
 package-lock.json
 ecosystem.config.js
