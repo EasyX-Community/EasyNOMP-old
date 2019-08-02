@@ -23,7 +23,7 @@
 | **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
 | **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
 | **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **SSL Enabled Dashboard** / To keep your miners anonymous &amp; secure! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **SSL Enabled Dashboard** / To keep you safe &amp; secure! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
 | **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
