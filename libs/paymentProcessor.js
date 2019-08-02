@@ -315,7 +315,7 @@ function SetupForPool(poolOptions, setupFinished) {
                 daemon.batchCmd(rpcDupCheck, function(error, blocks){
                     endRPCTimer();
                     if (error || !blocks) {
-                        logger.error('WATERFALL> Error with duplicate block check rpc call getblock %s', JSON.stringify(error));
+                        logger.error('ATTN> Error with duplicate block check rpc call getblock %s', JSON.stringify(error));
                         return;
                     }
                     // look for the invalid duplicate block
@@ -325,20 +325,20 @@ function SetupForPool(poolOptions, setupFinished) {
                         if (block && block.result) {
                             // invalid duplicate submit blocks have negative confirmations
                             if (block.result.confirmations < 0) {
-                                logger.debug('WATERFALL> Remove invalid duplicate block %s > %s', block.result.height, block.result.hash);
+                                logger.debug('ATTN> Remove invalid duplicate block %s > %s', block.result.height, block.result.hash);
                                 // move from blocksPending to blocksDuplicate...
                                 invalidBlocks.push(['smove', coin + ':blocksPending', coin + ':blocksDuplicate', dups[i].serialized]);
                             } else {
                                 // block must be valid, make sure it is unique
                                 if (validBlocks.hasOwnProperty(dups[i].blockHash)) {
                                     // not unique duplicate block
-                                    logger.debug('WATERFALL> Remove non-unique duplicate block %s > %s', block.result.height, block.result.hash);
+                                    logger.debug('ATTN> Remove non-unique duplicate block %s > %s', block.result.height, block.result.hash);
                                     // move from blocksPending to blocksDuplicate...
                                     invalidBlocks.push(['smove', coin + ':blocksPending', coin + ':blocksDuplicate', dups[i].serialized]);
                                 } else {
                                     // keep unique valid block
                                     validBlocks[dups[i].blockHash] = dups[i].serialized;
-                                    logger.debug('WATERFALL> Keep valid duplicate block %s > %s', block.result.height, block.result.hash);
+                                    logger.debug('ATTN> Keep valid duplicate block %s > %s', block.result.height, block.result.hash);
                                 }
                             }
                         }
@@ -352,19 +352,21 @@ function SetupForPool(poolOptions, setupFinished) {
                         redisClient.multi(invalidBlocks).exec(function(error, kicked){
                             endRedisTimer();
                             if (error) {
-                                logger.error('WATERFALL> Error could not move invalid duplicate blocks in redis %s', JSON.stringify(error));
+                                logger.error('ATTN> Error could not move invalid duplicate blocks in redis %s', JSON.stringify(error));
                             }
                         });
                     } else {
                         // notify pool owner that we are unable to find the invalid duplicate blocks, manual intervention required...
-                        logger.error('WATERFALL> Unable to detect invalid duplicate blocks, duplicate block payments on hold.');
+                        logger.error('ATTN> Unable to detect invalid duplicate blocks, duplicate block payments on hold.');
                     }
                 });
             }
+            
           logger.debug("WATERFALL> Prepared info basic info about payments");
           logger.debug("WATERFALL> workers = %s", JSON.stringify(workers));
           logger.debug("WATERFALL> rounds = %s", JSON.stringify(rounds));
           logger.debug("WATERFALL> Workers count: %s Rounds: %s", Object.keys(workers).length, rounds.length);
+          
           callback(null, workers, rounds);
         });
       },
@@ -517,7 +519,7 @@ function SetupForPool(poolOptions, setupFinished) {
                 if (workerStr.indexOf(".") !== -1) {
                 	
                   //we have address and worker
-                  logger.silly("WATERFALL> %s worker have both payout address and worker, merging", workerStr);
+                  logger.debug("WATERFALL> %s worker have both payout address and worker, merging", workerStr);
                   let workerInfo = workerStr.split('.');
                   if (workerInfo.length === 2) {
 
@@ -539,9 +541,9 @@ function SetupForPool(poolOptions, setupFinished) {
 	                    
                     if (resultForRound[address]) {
                     	
-                      logger.silly("WATERFALL> Already have balance for address %s : %s", address, resultForRound[address].toString(10));
+                      logger.debug("WATERFALL> Already have balance for address %s : %s", address, resultForRound[address].toString(10));
                       resultForRound[address] = resultForRound[address].plus(roundShare[workerStr]);
-                      logger.silly("WATERFALL> New balance %s ", resultForRound[address].toString(10));
+                      logger.debug("WATERFALL> New balance %s ", resultForRound[address].toString(10));
                       
                     } else {
                     	
@@ -564,7 +566,7 @@ function SetupForPool(poolOptions, setupFinished) {
 	                
 	                daemon.cmd('validateaddress', [address], function(result) {
 						if (result.error){
-						    logger.error('WATERFALL> Error with payment processing daemon ' + JSON.stringify(result.error));
+						    logger.debug('WATERFALL>ERROR> Error with payment processing daemon ' + JSON.stringify(result.error));
 //						    callback('Error with payment processing daemon ' + JSON.stringify(result.error));
 						}
 					}, true);
@@ -575,9 +577,9 @@ function SetupForPool(poolOptions, setupFinished) {
 	                // ATTRIBUTION OF SHARE TO THE WORKER
 					if (resultForRound[address]) {
 			
-						logger.silly("WATERFALL> Already have balance for address %s : %s", address, resultForRound[address].toString(10));
+						logger.debug("WATERFALL> Already have balance for address %s : %s", address, resultForRound[address].toString(10));
 						resultForRound[address] = resultForRound[address].plus(roundShare[workerStr]);
-						logger.silly("WATERFALL> New balance %s ", resultForRound[address].toString(10));
+						logger.debug("WATERFALL> New balance %s ", resultForRound[address].toString(10));
 			
 					} else {
 			
@@ -596,7 +598,7 @@ function SetupForPool(poolOptions, setupFinished) {
                   
                 }
               } else {
-                logger.error('Look around! We have anonymous shares, null worker');
+                logger.debug('WARN>Look around! We have anonymous shares, null worker');
               }
             });
             return resultForRound;

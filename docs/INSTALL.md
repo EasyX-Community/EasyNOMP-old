@@ -9,7 +9,7 @@ Simply create a user for the pool to run as, and log in to that user.
 Run this command
 
 ```
-git clone https://github.com/EasyX-Community/EasyNOMP.git ; cd EasyNOMP ; ./install.sh ;
+git clone https://github.com/leshacat/EasyNOMP.git ; cd EasyNOMP ; ./install.sh ;
 ```
 **Done!**
 
@@ -49,12 +49,13 @@ redis-cli FLUSHALL
 -------
 ### Install Pool
 ```
-git clone https://github.com/EasyX-Community/EasyNOMP.git
+git clone https://github.com/leshacat/EasyNOMP.git
 cd BootNOMP
+pm2 init
 npm install
 npm update
 npm audit fix
-pm2 start /path/to/init.js -i max --name pool
+pm2 start init.js -i max --watch --name pool
 ```
 
 -------
