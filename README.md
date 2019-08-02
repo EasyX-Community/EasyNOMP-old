@@ -1,17 +1,17 @@
-# [EasyNOMP](https://github.com/leshacat/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
+# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
 ##### Making it easy to install and configure NOMP!
 ##### Current Version: v1.1.4
 
 -------
 
-### EasyNOMP pool is live @ [http://miningpool.easyx.info:44420/](http://miningpool.easyx.info:44420/)
-#### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @Shawn)
+### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
+#### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @LeshaCat)
 #### Visit the EasyX Community website: http://www.easyx.info/
 
 -------
 
 ### Helping give NOMP & BootNOMP new life, with some style!
-***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://miningpool.easyx.info:44420/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
+***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://easyxpool.tk/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
 
 ***1301313Y:*** _"BootNOMP is all the things great about NOMP, now with modern style and design of BootStrap 4! Having disliked the previous UI, due to cramping, little to no info displayed while what is displayed is not very helpful to users. I decided to fork a already great project, and add some stylistic touches it severely needs. I would of considered requesting pulls to the main branch, though with such heavy changes to the project, I decided a hard fork would be well suited. But if you would like to contribute, please consider looking at the original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these guys are the ones who helped get this NOMP rebirthing process started."_
 
@@ -63,12 +63,12 @@ Restart the wallet + pool
 ### Node Open Mining Portal consists of 3 main modules:
 | Project | Link |
 | ------------- | ------------- |
-| [EasyNOMP](https://github.com/leshacat/EasyNOMP.git) | https://github.com/leshacat/EasyNOMP.git |
-| [Stratum Pool](https://github.com/leshacat/node-stratum-pool) | https://github.com/leshacat/node-stratum-pool |
-| [Node Multihashing](https://github.com/leshacat/node-multi-hashing) | https://github.com/leshacat/node-multi-hashing |
+| [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP) | https://github.com/EasyX-Community/EasyNOMP |
+| [Stratum Pool](https://github.com/EasyX-Community/node-stratum-pool) | https://github.com/EasyX-Community/node-stratum-pool |
+| [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) | https://github.com/EasyX-Community/node-multi-hashing |
 
 ***NOTE:*** _Stratum Pool can be replaced with [node-merged-pool](https://github.com/UNOMP/node-merged-pool) - https://github.com/UNOMP/node-merged-pool._<br />
-***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/leshacat/node-multi-hashing) - https://github.com/leshacat/node-multi-hashing._
+***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
 
 -------
 ### License
