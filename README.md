@@ -179,7 +179,8 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 ### Credits
 | User | Comment|
 | ------------- | ------------- |
-| [foxer666](//github.com/foxer666) | How could anyone forget the original [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) dev? |
+| [foxer666](//github.com/foxer666) | How could anyone forget the original [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) devs? |
+| [foxer666](//github.com/zone117x) | How could anyone forget the original [zone117x/node-open-mining-portal](https://github.com/zone117x/node-open-mining-portal) devs? |
 | [1301313Y](//github.com/1301313Y) | How could anyone forget the original [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) dev? |
 | [LeshaCat](//github.com/leshacat) | How could anyone forget the original [leshacat/EasyNOMP](https://github.com/leshacat/EasyNOMP) dev?<br /> - Fixed lots of documentation, configuration, and block explorer |
 | &nbsp; | &nbsp; |
