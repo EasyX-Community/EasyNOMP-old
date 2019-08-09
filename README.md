@@ -54,12 +54,12 @@
 -------
 ### Requirements
 ***NOTE:*** _These requirements will be installed in the install section!_<br />
+* Coin daemon(s)
 * Node Version Manager
 * Node 8.1.4 or higher
-* Redis Server
 * Process Manager 2
+* Redis Server
 * ntp
-* Coin daemon(s)
 
 -------
 ### License
