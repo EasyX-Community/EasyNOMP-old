@@ -5,6 +5,7 @@
 -------
 
 ### EasyNOMP pool is live @ [https://easyxpool.tk/](http://easyxpool.tk/)
+### EasyNOMP development pool is live @ [https://dev.easyxpool.tk/news](https://dev.easyxpool.tk/news)
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
 ***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
 ***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
@@ -12,8 +13,7 @@
 
 ***2019/08/08 - I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
 
-***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***<br />
-***Check out the EasyNOMP development server https://dev.easyxpool.tk/news***
+***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***
 
 -------
 ### !~ DEVELOPMENT WARNING ~!
