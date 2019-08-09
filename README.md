@@ -10,7 +10,7 @@
 ***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
 
 
-***EasyNOMP support is DISCONTINUED! I am busy as a pool operator. Please do not ask me about EasyNOMP.***
+***EasyNOMP support is DISCONTINUED! I am busy as a pool operator. Please create an issue ticket for bugs and feature requests.***
 
 -------
 ### !~ DEVELOPMENT WARNING ~!
