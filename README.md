@@ -69,7 +69,7 @@ http://www.gnu.org/licenses/gpl-2.0.html
 -------
 ### Install Pool
 
-Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/INSTALL.md)
+Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/INSTALL.md)
 
 -------
 ### Configure Pool
@@ -79,34 +79,17 @@ Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/Eas
 -------
 ### Run in Docker
 
-Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/DOCKER.md)
+Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/DOCKER.md)
 
 -------
 ### Changelog
 
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/CHANGELOG.md)
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
 
 -------
 ### Troubleshooting
 
-Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/CHANGELOG.md)
-
--------
-### !~ PAYMENT BUG WARNING ~!
-
-https://github.com/bitcoin/bitcoin/issues/14578<br />
-https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
-https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
-
-If you encounter "Work queue depth exceeded" enter into wallet config:
-```
-rpcworkqueue=100
-```
-Restart the wallet + pool
-
-***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
-
-***Sorry for the inconvenience!***
+Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
@@ -168,16 +151,16 @@ Restart the wallet + pool
 -------
 ### Screenshots
 #### Home<br />
-![Home](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/home.png)
+![Home](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/blob/master/docs/screenshots/home.png)
 
 #### Pool Stats<br />
-![Pool Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/poolstats.png)<br /><br />
+![Pool Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/blob/master/docs/screenshots/poolstats.png)<br /><br />
 
 #### Miner Stats<br />
-![Miner Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/minerstats.png)<br /><br />
+![Miner Stats](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/blob/master/docs/screenshots/minerstats.png)<br /><br />
 
 #### Block Explorer<br />
-![Block Explorer](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/master/docs/screenshots/blockexplorer.png)<br /><br />
+![Block Explorer](https://raw.githubusercontent.com/EasyX-Community/EasyNOMP/blob/master/docs/screenshots/blockexplorer.png)<br /><br />
 
 -------
 ### Credits
