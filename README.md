@@ -7,9 +7,7 @@
 ***EasyNOMP pool is live, come mine PEXA @ [https://easyxpool.tk/](http://easyxpool.tk/)***<br />
 ***EasyNOMP development pool is live @ [https://dev.easyxpool.tk/](https://dev.easyxpool.tk/news)***<br /><br />
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
-***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
-***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
-
+***Visit the Pexa Project website: https://www.pexaproject.com/***
 
 ***2019/08/08 - I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
 
