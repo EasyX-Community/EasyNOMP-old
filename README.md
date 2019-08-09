@@ -29,23 +29,6 @@
 | **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
 
 -------
-### !~ PAYMENT BUG WARNING ~!
-
-https://github.com/bitcoin/bitcoin/issues/14578<br />
-https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
-https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
-
-If you encounter "Work queue depth exceeded" enter into wallet config:
-```
-rpcworkqueue=100
-```
-Restart the wallet + pool
-
-***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
-
-***Sorry for the inconvenience!***
-
--------
 
 ### Helping give NOMP & BootNOMP new life, with some style!
 ***LeshaCat:*** _"EasyNOMP is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://easyxpool.tk/). EasyNOMP is based off of BootNOMP. It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a soft fork with pull requests to the original and parent projects would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
@@ -67,6 +50,23 @@ Restart the wallet + pool
 
 ***NOTE:*** _Stratum Pool can be replaced with [node-merged-pool](https://github.com/UNOMP/node-merged-pool) - https://github.com/UNOMP/node-merged-pool._<br />
 ***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
+
+-------
+### !~ PAYMENT BUG WARNING ~!
+
+https://github.com/bitcoin/bitcoin/issues/14578<br />
+https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
+https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
+
+If you encounter "Work queue depth exceeded" enter into wallet config:
+```
+rpcworkqueue=100
+```
+Restart the wallet + pool
+
+***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
+
+***Sorry for the inconvenience!***
 
 -------
 ### Requirements
