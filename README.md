@@ -12,7 +12,7 @@
 
 ***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***<br />
 
-***I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
+***2018/08/08 - I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
 
 -------
 ### !~ DEVELOPMENT WARNING ~!
