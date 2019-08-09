@@ -1,5 +1,5 @@
 {
-    "enabled": true,
+    "enabled": false,
     "coin": "pexacoin.json",
 
     "address": "YOUR_POOLS_WALLET_ADDRESS",
