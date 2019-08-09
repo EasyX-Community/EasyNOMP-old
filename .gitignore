@@ -4,6 +4,8 @@
 .idea/
 
 node_modules/
+libs/BACKUP-OLD
+website/static/OLD
 
 certs/*.pem
 certs/*.crt
