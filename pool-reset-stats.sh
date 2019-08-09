@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ""
-echo "EasyNOMP Starting..."
+echo "EasyNOMP Stats Resetting..."
 echo ""
 
 source ~/.bashrc
@@ -29,3 +29,5 @@ renice -n -18 -p $(pidof nodejs)
 echo ""
 echo "Done!"
 echo ""
+
+exit 0

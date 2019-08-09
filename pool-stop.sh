@@ -22,3 +22,5 @@ pm2 stop pool
 echo ""
 echo "Done!"
 echo ""
+
+exit 0
