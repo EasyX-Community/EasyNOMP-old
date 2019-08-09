@@ -4,7 +4,9 @@
 
     "devmode": false,
     
-    "disableMinimums": false,
+    "poolwarningmsg": "WARNING: POOL IS DEFAULT CONFIGURATION",
+    
+    "defaultCoin": "pexacoin",
     
     "poollogo": "",
     

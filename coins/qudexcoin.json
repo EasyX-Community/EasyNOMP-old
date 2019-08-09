@@ -1,9 +1,0 @@
-{
-    "name": "qudex",
-    "symbol": "QDP",
-    "algorithm": "qubit",
-    "explorerGetBlockJSON": "http://www.qudexpay.com:3001/api/getblock?hash=",
-    "explorerGetBlock": "http://www.qudexpay.com:3001/block/",
-    "explorerGetTX": "http://www.qudexpay.com:3001/api/getrawtransaction?txid={0}&decrypt=1",
-    "blockTime": 60
-}

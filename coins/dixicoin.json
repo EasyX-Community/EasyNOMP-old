@@ -1,9 +1,0 @@
-{
-    "name": "dixicoin",
-    "symbol": "DXC",
-    "algorithm": "c11",
-    "explorerGetBlockJSON": "http://www.dixi.live/api/getblock?hash=",
-    "explorerGetBlock": "http://www.dixi.live/block/",
-    "explorerGetTX": "http://www.dixi.live/api/getrawtransaction?txid={0}&decrypt=1",
-    "blockTime": 60
-}

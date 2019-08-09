@@ -2,8 +2,15 @@
     "name": "Pexacoin",
     "symbol": "PEXA",
     "algorithm": "x16r",
+    
+    "wallet": "https://github.com/pexacoin/core",
 
-    "explorerGetBlockJSON": "https://pexa.easyxpool.tk:451/api/getblock?txid=",
-    "explorerGetBlock": "https://pexa.easyxpool.tk:451/block/",
-    "explorerGetTX": "https://pexa.easyxpool.tk:451/tx/"
+    "explorer":"https://pexa.easyxpool.tk/",
+    
+    "explorerGetBlockJSON": "https://pexa.easyxpool.tk/api/getblock?txid=",
+    "explorerGetBlock": "https://pexa.easyxpool.tk/block/",
+    "explorerGetTX": "https://pexa.easyxpool.tk/tx/",
+    
+    "blockTime": 60
+    
 }
