@@ -5,7 +5,7 @@
 -------
 
 ### EasyNOMP pool is live @ [https://easyxpool.tk/](http://easyxpool.tk/)
-### EasyNOMP development pool is live @ [https://dev.easyxpool.tk/news](https://dev.easyxpool.tk/news)
+***EasyNOMP development pool is live @ [https://dev.easyxpool.tk/news](https://dev.easyxpool.tk/news)***
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
 ***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
 ***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
