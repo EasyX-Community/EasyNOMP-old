@@ -86,8 +86,8 @@ or
 ```
 pm2 startup
 ```
-Copy & paste the command (if it asks you to)
-Start the server how you like it
+Copy & paste the command (if it asks you to)<br />
+Save the process list
 ```
 pm2 save
 ```
