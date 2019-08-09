@@ -52,6 +52,16 @@
 ***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
 
 -------
+### Requirements
+***NOTE:*** _These requirements will be installed in the install section!_<br />
+* Node Version Manager
+* Node 8.1.4 or higher
+* Redis Server
+* Process Manager 2
+* ntp
+* Coin daemon(s)
+
+-------
 ### !~ PAYMENT BUG WARNING ~!
 
 https://github.com/bitcoin/bitcoin/issues/14578<br />
@@ -67,16 +77,6 @@ Restart the wallet + pool
 ***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
 
 ***Sorry for the inconvenience!***
-
--------
-### Requirements
-***NOTE:*** _These requirements will be installed in the install section!_<br />
-* Node Version Manager
-* Node 8.1.4 or higher
-* Redis Server
-* Process Manager 2
-* ntp
-* Coin daemon(s)
 
 -------
 ### License
