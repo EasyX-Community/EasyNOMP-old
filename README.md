@@ -11,7 +11,9 @@
 
 
 ***EasyNOMP support is DISCONTINUED! I am busy as a pool operator.***<br />
-***Please create an issue ticket for bugs and feature requests.***
+***Please create an issue ticket for bugs and feature requests.***<br />
+
+***I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
 
 -------
 ### !~ DEVELOPMENT WARNING ~!
