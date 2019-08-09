@@ -82,14 +82,14 @@ Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/Eas
 Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/DOCKER.md)
 
 -------
-### Changelog
-
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
-
--------
 ### Troubleshooting
 
 Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/TROUBLESHOOTING.md)
+
+-------
+### Changelog
+
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
