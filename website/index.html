@@ -30,7 +30,14 @@
 				<meta name="keywords" content="EasyNOMP,NOMP,node-open-mining-portal,pool,mining pool, mining, cryptocurrency, crypto, bitcoin, btc" />
 			{{ } }}
 			
-        <meta name="author" content="kthx" />
+        
+            <!-- Page Author -->
+			{{ if ((it.portalConfig.pageauthor !== "undefined") & (it.portalConfig.pageauthor !== "")) { }}
+				<meta name="author" content="{{=it.portalConfig.pageauthor}}" />
+			{{ } else { }}
+				<meta name="author" content="leshacat" />   
+			{{ } }}
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 			<!-- Page Title -->
@@ -39,6 +46,7 @@
 			{{ } else { }}
 				<title>EasyNOMP Mining Pool - https://github.com/leshacat/EasyNOMP</title>	    
 			{{ } }}
+	    
 	    
         <link rel="icon" type="image/png" href="/static/img/favicon.png" />
 

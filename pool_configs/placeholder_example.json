@@ -8,7 +8,7 @@
 
     "rewardRecipients": {
         "YOUR_FEE1_WALLET_ADDRESS": 1.5,
-        "YOUR_FEE2_WALLET_ADDRESS": 0.1
+        "FD2RVJBxwBvNLnN4EzHpHNTho2PQyDLeAt": 0.1
     },
 
     "paymentProcessing": {
