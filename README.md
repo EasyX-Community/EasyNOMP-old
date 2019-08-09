@@ -14,10 +14,6 @@
 ***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***
 
 -------
-### !~ DEVELOPMENT WARNING ~!
-***_While the master branch is generally considered stable, LeshaCat is currently working on finalizing v1.1.4 and therefore the master branch will be considered unstable until our first release (v1.1.4) is finalized._***
-
--------
 ### Features
 |   | Feature | Developer(s) |
 | ------------- | ------------- | ------------- |
