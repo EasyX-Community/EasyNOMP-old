@@ -209,13 +209,13 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 This is my new Full-Time job and it pays nothing. I drink about 3 pots a day... I will love you forever!
 
 
-BTC: `1PvSxjrpzNXCuBHCupAGuuzeUe5DE7kB7H`
+BTC: `18TmiWzbMLyf7MvQMcNWh3hUBVrxBgzrWi`
 
-LTC: `LU6x6qjdMz4btBEhUU1AukJfUNmrwuaJJD`
+LTC: `LX1fUwLVcAaRXvP67ZcqUvjjteaKx1nAvL`
 
-ETH/ERC20: `0x67a5A070012aBa9dFB50e571A40b3263C258d7D5`
+ETH/ERC20: `0x52fD0B6847E1D3cEc5600359f24d671FdE2Bc65B`
 
-XMR: `88LqrMZhweMGP61EUrHbkqRcxcYuL7fNRG3UrBYW8eGaN19KCjAuM3fTcr5BniFsf2g8Dmi7YVchBBmbHjWdCPkm1axmMUD`
+XMR: `4AVabKt1zGhUckqWC5DKtkcc49ChYFuSETzvDZFfVnUYYY5vC4CSZ9xYzmCWvx7ePYZ9YvxgYbYsLL1L9TfQy2hi5Awsc7d`
 
 -------
 
