@@ -89,7 +89,7 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 -------
 ### Troubleshooting
 
-Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
+Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/TROUBLESHOOTING.md)
 
 -------
 ### Hashing algorithms
