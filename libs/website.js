@@ -38,18 +38,19 @@ module.exports = function () {
     var logSystem = 'Website';
 
     var pageFiles = {
-        'index.html': 'index',
-        'home.html': '',
-    	'pools.html': 'pools',
-        'getting_started.html': 'getting_started',
-        'stats.html': 'stats',
-        'dashboard.html': 'dashboard',
-        'api.html': 'api',
-        'learn_more.html': 'learn_more',
-        'miner_stats.html': 'miner_stats',
-        'pool_stats.html': 'pool_stats',
-        'workers.html': 'workers',
-        'blocks.html': 'blocks'
+        'home.html': '',                                // home page
+        'index.html': 'index',                          // index page
+        'news.html': 'news',                            // news page
+        'getting_started.html': 'getting_started',      // getting started page
+        'dashboard.html': 'dashboard',                  // dashboard page
+    	'pools.html': 'pools',                          // all pool stats page
+        'stats.html': 'stats',                           // individual pool stats pages
+        'workers.html': 'workers',                      // individual & all worker stats pages
+        'blocks.html': 'blocks',                        // payment history
+        'learn_more.html': 'learn_more',                // help
+        'api.html': 'api',                              // api
+        'miner_stats.html': 'miner_stats',              // individual miner stats (skeleton?)
+        'pool_stats.html': 'pool_stats'                 // individual pool stats (skeleton?)
     };
 
     var pageTemplates = {};

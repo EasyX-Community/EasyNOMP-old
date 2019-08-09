@@ -2,8 +2,15 @@
     "name": "Bitcash",
     "symbol": "BITC",
     "algorithm": "x16r",
+    
+    "wallet": "https://github.com/WillyTheCat/BitCash",
 
-    "explorerGetBlockJSON": "https://bitc.easyxpool.tk:444/api/getblock?txid=",
-    "explorerGetBlock": "https://bitc.easyxpool.tk:444/block/",
-    "explorerGetTX": "https://bitc.easyxpool.tk:444/tx/"
+    "explorer":"https://bitc.easyxpool.tk/",
+    
+    "explorerGetBlockJSON": "https://bitc.easyxpool.tk/api/getblock?txid=",
+    "explorerGetBlock": "https://bitc.easyxpool.tk/block/",
+    "explorerGetTX": "https://bitc.easyxpool.tk/tx/",
+    
+    "blockTime": 60
+    
 }

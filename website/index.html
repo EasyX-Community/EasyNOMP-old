@@ -66,20 +66,27 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" />
+        <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" />-->
+        
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
         
         <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
         <!-- Charts n such -->
+        <script src="/static/moment.min.js"></script>
+        
         <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        
         <script src="/static/raphael-2.1.4.min.js"></script>
         <script src="/static/justgage.js"></script>
 
         <!-- the scrieeeepts -->
         <script src="/static/main.js"></script>
+        
         <script src="/static/stat_tracker.js"></script>
+        
         <!--<link rel="stylesheet" href="/static/style.css">-->
 
 
@@ -256,50 +263,166 @@
                     <li>
                         <a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars sidebar-icon"></i>&nbsp;&nbsp;Toggle Menu</a>
                     </li>
+                           
+                                   
                    <li>
-                     <a href="/getting_started">
-                         <i class="fa fa-user-plus sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;Getting Started
-                       </a>
+                     <a href="/news">
+                         <i class="fas fa-newspaper sidebar-icon"></i>&nbsp;News
+                     </a>
                    </li>
+                   
+                         
+                                 
+                   <li>
+                     <a href="/getting_started"><i class="fa fa-user-plus sidebar-icon"></i>Add Miner</a>
+                   </li>
+                   
                     <li>
-                        <a href="/dashboard"><i class="fas fa-tachometer-alt sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;Dashboard</a>
+                        <a href="/dashboard"><i class="fas fa-tachometer-alt sidebar-icon"></i>&nbsp;Dashboard</a>
                     </li>
+		            
                    <li><!-- Link with dropdown items -->
-                     <a class="sidebar-link" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-swimming-pool sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;Pools</a>
+                     <a class="sidebar-link" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fa fa-swimming-pool sidebar-icon"></i>&nbsp;Pools</a>
                      <ul class="collapse list-unstyled" id="homeSubmenu">
-                     
+
                         <li>
-                            <a href="/pools">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;All Pools <span class="sr-only">(current)</span></a>
+                           <a href="/pools">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart sidebar-icon"></i>All Pools </a>
                         </li>                     
-                     
-                       {{ for(var pool in it.stats.pools) { }}
-                       <li>
-			     <a class="bg-dark text-light pl-3" href="/stats/{{=it.stats.pools[pool].name}}">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a>
-			</li>
-                       {{ } }}
-                       <br />
+
+                        {{ for(var pool in it.stats.pools) { }}
+                        <li>
+            			     <a class="bg-dark text-light pl-3" href="/stats/{{=it.stats.pools[pool].name}}">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a>
+            			</li>
+                        {{ } }}
+                        
+                       <p></p>
+                       
                      </ul>                   
                      
                    </li>
                     
                     <li>
-		               <a href="/workers"><i class="fa fa-users sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;All Workers</a>
+		               <a href="/workers"><i class="fa fa-users sidebar-icon"></i>&nbsp;Workers</a>
 		            </li>
+                   
+                    
                    <li>
                      <a href="/blocks">
-                         &nbsp;<i class="fas fa-donate sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;Payment History
+                         <i class="fas fa-donate sidebar-icon"></i>&nbsp;Payments
                        </a>
                    </li>
+                           
+                   <li><!-- Link with dropdown items -->
+                     <a class="sidebar-link" href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"><i class="fas fa-cube sidebar-icon"></i>&nbsp;Block Explorers</a>
+                     <ul class="collapse list-unstyled" id="homeSubmenu2">
+                                             
+                        {{ for(var pool in it.stats.pools) { }}
+                        <li>
+            			     <a class="bg-dark text-light pl-3" href="{{=it.poolConfigs[pool].coin.explorer}}" target="_blank">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a>
+            			</li>
+                        {{ } }}
+                        
+                        <li>
+                         <a href="https://stg.easyxpool.tk:449/" target="_blank">
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/icons/securetag.png" style="height: 24px;" alt="icon" />&nbsp;Securetag 
+                         </a>
+                        </li>                   
+                                             
+                        <p></p>
+                       
+                     </ul>                   
+                     
+                   </li> 
+                   
+                   
+                   <li><!-- Link with dropdown items -->
+                     <a class="sidebar-link" href="#homeSubmenu7" data-toggle="collapse" aria-expanded="false"><i class="fas fa-robot sidebar-icon"></i>Miners</a>
+                     <ul class="collapse list-unstyled" id="homeSubmenu7">
+                     
+                        
+                       <li>
+                         <a href="https://github.com/trexminer/T-Rex/releases" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-download sidebar-icon"></i>&nbsp;T-Rex</a>
+                       </li> 
+                        <li>
+                         <a href="https://www.nicehash.com/?refby=1662147" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//www.nicehash.com/favicon.ico" style="height: 24px;width: 24px;" alt="icon" />&nbsp;NiceHash
+                         </a>
+                        </li>
+                        <li>
+                         <a href="https://www.miningrigrentals.com/register?ref=2607460" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//www.miningrigrentals.com/favicon.ico" style="height: 24px;width: 24px;" alt="icon" />&nbsp;MiningRigRentals
+                         </a>
+                        </li>                 
+                                             
+                        <p></p>
+                       
+                     </ul>                   
+                     
+                   </li>
+                   
+                   <li><!-- Link with dropdown items -->
+                     <a class="sidebar-link" href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false">&nbsp;<i class="fas fa-wallet sidebar-icon"></i>&nbsp;Wallets</a>
+                     <ul class="collapse list-unstyled" id="homeSubmenu6">
+                     
+                        {{ for(var pool in it.stats.pools) { }}
+                        <li>
+                             <a class="bg-dark text-light pl-3" href="{{=it.poolConfigs[pool].coin.wallet}}" target="_blank">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a>
+                        </li>
+                        {{ } }}                  
+                                             
+                        <p></p>
+                       
+                     </ul>                   
+                     
+                   </li>
+                   
+                   
+                   
+                   <li><!-- Link with dropdown items -->
+                     <a class="sidebar-link" href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false"><i class="fas fa-link sidebar-icon"></i>&nbsp;Links</a>
+                     <ul class="collapse list-unstyled" id="homeSubmenu4">
+                     
+                        
+                        <li>
+                         <a href="https://brave.com/eas244" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//brave.com/wp-content/uploads/2018/02/cropped-brave_appicon_release-32x32.png" style="height: 24px;width: 24px;" alt="icon" />&nbsp;Brave Browser
+                         </a>
+                        </li>  
+                        <li>
+                         <a href="https://www.sliver.tv/invite/2g0snbvn" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//www.sliver.tv/favicon.ico" style="height: 24px;width: 24px;" alt="icon" />&nbsp;Silver.tv
+                         </a>
+                        </li>
+                        <li>
+                         <a href="https://www.nicehash.com/?refby=1662147" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//www.nicehash.com/favicon.ico" style="height: 24px;width: 24px;" alt="icon" />&nbsp;NiceHash
+                         </a>
+                        </li>
+                        <li>
+                         <a href="https://www.miningrigrentals.com/register?ref=2607460" target="_blank">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="//www.miningrigrentals.com/favicon.ico" style="height: 24px;width: 24px;" alt="icon" />&nbsp;MiningRigRentals
+                         </a>
+                        </li>                   
+                                             
+                        <p></p>
+                       
+                     </ul>                   
+                     
+                   </li> 
+                   
+                     
+                   
+                   
                    <li>
                      <a href="/learn_more">
-                         &nbsp;<i class="fas fa-question-circle sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;Help
+                         &nbsp;<i class="fas fa-question-circle sidebar-icon"></i>&nbsp;Help
                        </a>
                    </li>
                    <li>
-                        <a href="/api">
-                            <i class="fa fa-laptop-code sidebar-icon" alt="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></i>&nbsp;API
-                        </a>
-                    </li>
+                    <a href="/api">
+                        <i class="fa fa-laptop-code sidebar-icon"></i>&nbsp;API
+                    </a>
+                   </li>
 
                 </ul>
             </div>
@@ -396,6 +519,14 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+            
+            //collapse all menus (works yay!)
+            $('#homeSubmenu').collapse('hide');            
+            $('#homeSubmenu2').collapse('hide');            
+            $('#homeSubmenu4').collapse('hide');            
+            $('#homeSubmenu6').collapse('hide');            
+            $('#homeSubmenu7').collapse('hide');            
+            
         });
         $(".sidebar-link").click(function(e) {
             e.preventDefault();

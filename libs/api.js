@@ -1,12 +1,16 @@
 var redis = require('redis');
 var async = require('async');
 
+/*var JSONStream = require('JSONStream');
+var es = require('event-stream');*/
+
 var stats = require('./stats.js');
 
 
 const loggerFactory = require('./logger.js');
 
 const logger = loggerFactory.getLogger('Api', 'system');
+
 
 
 module.exports = function(portalConfig, poolConfigs) {
@@ -121,9 +125,39 @@ module.exports = function(portalConfig, poolConfigs) {
           }));
         }
         return;
+      case 'pool_fees':
+        res.header('Content-Type', 'application/json');
+             
+            
+            /*var o = {'payoutscheme':"PROP", pools : [] } // empty Object
+            
+            for (var pool in poolConfigs) {
+                
+                var key = pool;
+                
+                var ttotal = 0.0;
+                
+    		    var rewardRecipients = portalStats.stats.pools[pool].rewardRecipients || {};
+                for (var r in rewardRecipients) {
+                    ttotal += rewardRecipients[r];
+                }
+                
+                var data = {
+                    pool: ttotal,
+                };
+                
+                o.pools[key].push(data);
+                
+            }
+            
+            res.end(JSON.stringify(o));*/
+        
+        return;
       case 'pool_stats':
         res.header('Content-Type', 'application/json');
-        res.end(JSON.stringify(portalStats.statPoolHistory));
+             
+            res.end(JSON.stringify(portalStats.statPoolHistory));
+        
         return;
       case 'live_stats':
         res.writeHead(200, {

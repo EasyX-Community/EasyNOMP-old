@@ -149,7 +149,7 @@ function displayCharts() {
 	);
 }
 
-function updateStats(poop) {
+function updateStats() {
 	var stats = getWorkerStats(_miner);
 	totalHash = stats.hashrate;
 	totalPaid = stats.paid;
@@ -159,10 +159,9 @@ function updateStats(poop) {
 	// update miner stats
 	$("#statsHashrate").text(getReadableHashRateString(totalHash));
 	$("#statsHashrateAvg").text(getReadableHashRateString(calculateAverageHashrate(null)));
-	$("#total-immature-label").text(totalImmature + ' ' + stats.symbol);
-	$("#total-balance-label").text(totalBal + ' ' + stats.symbol);
-	let now = new Date();
-	$("#total-paid-label").text(totalPaid + ' ' + stats.symbol); //  + ' ' + poop + ' test: ' + now
+	$("#statsTotalImmature").text(totalImmature);
+	$("#statsTotalBal").text(totalBal);
+	$("#statsTotalPaid").text(totalPaid);
 }
 
 function updateWorkerStats() {
@@ -226,7 +225,7 @@ function rebuildWorkerDisplay() {
 // grab initial stats
 $.getJSON('/api/worker_stats?' + _miner, function(data) {
 	if (document.hidden) return;
-	var myJsonGet = $.getJSON('/api/pool_stats', function(statData) {
+	$.getJSON('/api/pool_stats', function(statData) {
 		addWorkerToTracker(statData, data, _miner, function(){
 			var stats = getWorkerStats(_miner);
 			statData = data;
@@ -235,80 +234,19 @@ $.getJSON('/api/worker_stats?' + _miner, function(data) {
 			}
 			displayCharts();
 			rebuildWorkerDisplay();
-			updateStats("initial");
+			updateStats();
 
-			/*$('#total-balance-label').text(stats.balance.toFixed(8) + ' ' + stats.symbol);
-			$('#total-immature-label').text(stats.immature.toFixed(8) + ' ' + stats.symbol + ' test');
-			$('#total-paid-label').text(stats.paid.toFixed(8) + ' ' + stats.symbol);*/
-			
-        	/*$("#total-immature-label").text(totalImmature + ' ' + stats.symbol);
-        	$("#total-balance-label").text(totalBal + ' ' + stats.symbol);
-        	$("#total-paid-label").text(totalPaid + ' ' + stats.symbol);*/
-	
+			$('#total-paid-label').append(stats.paid.toFixed(8) + ' ' + stats.symbol);
 		});
 	});
-	setTimeout(function(){ myJsonGet.abort(); }, 60000);
 });
 
 
 // live stat updates
 statsSource.addEventListener('message', function(e) {
-	
-	/*var stats = JSON.parse(e.data);
-    statData.push(stats);*/
-	
-	/*var myJsonGet1 = $.getJSON('/api/worker_stats?' + _miner, function(data) {
-    	$('#total-paid-label').empty();
-    	$('#total-immature-label').empty();
-    	$('#total-balance-label').empty();
-    	$('#total-paid-label').append(total.toFixed(8) + ' ' + stats.symbol);
-    	$('#total-immature-label').append(total.toFixed(8) + ' ' + stats.symbol + ' test');
-    	$('#total-balance-label').append(total.toFixed(8) + ' ' + stats.symbol);
+	var stats = JSON.parse(e.data);
+	$.getJSON('/api/worker_stats?' + _miner, function(data) {
+    //$('#total-paid-label').empty();
+    //$('#total-paid-label').append(total.toFixed(8) + ' ' + symbol);
 	});
-	
-	setTimeout(function(){ myJsonGet1.abort(); }, 60000);*/
-	
-	/*var myJsonGet = $.getJSON('/api/pool_stats', function(statData) {
-		addWorkerToTracker(statData, data, _miner, function(){
-			var stats = getWorkerStats(_miner);
-			statData = data;
-			for (var w in statData.workers) {
-				_workerCount++;
-			}
-			displayCharts();
-			rebuildWorkerDisplay();
-			updateStats("update");
-			
-			$('#total-paid-label').append(stats.paid.toFixed(8) + ' ' + stats.symbol);
-			$('#total-immature-label').append(stats.immature.toFixed(8) + ' ' + stats.symbol);
-			$('#total-balance-label').append(stats.balance.toFixed(8) + ' ' + stats.symbol);
-		});
-	});
-	
-	setTimeout(function(){ myJsonGet.abort(); }, 60000);*/
-	
-	
-	$.getJSON('/api/worker_stats?'+_miner, function(data){
-		statData = data;
-		// check for missing workers
-		var wc = 0;
-		var rebuilt = false;
-		// update worker stats
-		for (var w in statData.workers) { wc++; }
-		// TODO, this isn't 100% fool proof!
-		if (_workerCount != wc) {
-			if (_workerCount > wc) {
-				rebuildWorkerDisplay();
-				rebuilt = true;
-			}
-			_workerCount = wc;
-		}
-		rebuilt = (rebuilt || updateChartData());
-		updateStats("update");
-		if (!rebuilt) {
-			updateWorkerStats();
-		}
-	});
-	
-	
 });
