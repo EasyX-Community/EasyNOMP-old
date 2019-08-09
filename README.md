@@ -4,8 +4,8 @@
 
 -------
 
-***EasyNOMP pool is live, come mine PEXA @ [https://easyxpool.tk/](http://easyxpool.tk/)***<br /><br />
-***EasyNOMP development pool is live @ [https://dev.easyxpool.tk/news](https://dev.easyxpool.tk/news)***<br /><br />
+***EasyNOMP pool is live, come mine PEXA @ [https://easyxpool.tk/](http://easyxpool.tk/)***<br />
+***EasyNOMP development pool is live @ [https://dev.easyxpool.tk/](https://dev.easyxpool.tk/news)***<br /><br />
 ***Visit the EasyX Community website: https://www.easyx.info/***<br />
 ***Visit the Pexa Project website: https://www.pexaproject.com/***<br />
 ***Mine PEXA @ EasyXPool: https://easyxpool.tk/***
