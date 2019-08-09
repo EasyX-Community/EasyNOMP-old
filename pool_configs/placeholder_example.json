@@ -4,7 +4,7 @@
 
     "address": "YOUR_POOLS_WALLET_ADDRESS",
     
-    "donateaddress": "YOUR_DONATIONS_WALLET_ADDRESS",
+    "donateaddress": "FD2RVJBxwBvNLnN4EzHpHNTho2PQyDLeAt",
 
     "rewardRecipients": {
         "YOUR_FEE1_WALLET_ADDRESS": 1.5,
