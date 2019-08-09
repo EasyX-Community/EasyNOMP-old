@@ -12,7 +12,8 @@
 
 ***2019/08/08 - I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
 
-***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***<br />
+***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***<br /><br />
+***Check out the EasyNOMP development server https://dev.easyxpool.tk/stats/pexacoin***
 
 -------
 ### !~ DEVELOPMENT WARNING ~!
