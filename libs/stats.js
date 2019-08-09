@@ -270,12 +270,11 @@ module.exports = function(portalConfig, poolConfigs) {
         ['scard', ':blocksConfirmed'],
         ['scard', ':blocksOrphaned'],
         ['smembers', ':blocksConfirmed'],
-        ['zrange', ':payments', -500, -1],
+        ['zrange', ':payments', -100, -1],
         ['hgetall', ':shares:roundCurrent'],
         ['smembers', ':blocksConfirmed'],
         ['hgetall', ':blocksPendingConfirms'],
-        ['smembers', ':blocksConfirmed'],
-        ['zrange', ':blocksPendingConfirms', -100, -1]
+        ['smembers', ':blocksConfirmed']
       ];
 
       var commandsPerCoin = redisCommandTemplates.length;
@@ -321,7 +320,7 @@ module.exports = function(portalConfig, poolConfigs) {
               blocks: {
                 pending: replies[i + 3],
                 confirmed: replies[i + 4],
-                confirmedData: replies[i + 6] && replies[i + 6].length > 0 ? replies[i + 6].sort(function(a, b){ return parseInt(b.split(':')[2] - a.split(':')[2])}) : replies[i + 6],
+                //confirmedData: replies[i + 6] && replies[i + 6].length > 0 ? replies[i + 6].sort(function(a, b){ return parseInt(b.split(':')[2] - a.split(':')[2])}) : replies[i + 6],
                 orphaned: replies[i + 5]
               },
               /* show all pending blocks */
@@ -330,15 +329,12 @@ module.exports = function(portalConfig, poolConfigs) {
                 confirms: (replies[i + 10] || {})
               },
               /* show last 50 found blocks */
-			  confirmed: {
-			  	blocks: replies[i + 11].sort(sortBlocks).slice(0,50)
-			  },
+                confirmed: {
+                	blocks: replies[i + 11].sort(sortBlocks).slice(0,50)
+                },
               payments: [],
               currentRoundShares: (replies[i + 8] || {})
             };
-            
-            
-            /* PUSH CONFIRMED PAYMENTS TO ARRAY */
             for(var j = replies[i + 7].length; j > 0; j--){
                  var jsonObj;
                  try {
@@ -350,22 +346,6 @@ module.exports = function(portalConfig, poolConfigs) {
                      coinStats.payments.push(jsonObj);
                  }
              }
-            
-          //PUSH IMMATURE PAYMENTS TO ARRAY
-            for(var j = replies[i + 12].length; j > 0; j--){
-                 var jsonObj;
-                 try {
-                     jsonObj = JSON.parse(replies[i + 12][j-1]);
-                 } catch(e) {
-                     jsonObj = null;
-                 }
-                 if (jsonObj !== null) {
-                     coinStats.blocksPending.push(jsonObj);
-                 }
-             }
-             
-             
-             
             allCoinStats[coinStats.name] = (coinStats);
           }
           callback();

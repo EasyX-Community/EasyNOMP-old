@@ -51,26 +51,34 @@ redis-cli FLUSHALL
 ```
 git clone https://github.com/leshacat/EasyNOMP.git
 cd BootNOMP
-pm2 init
 npm install
 npm update
 npm audit fix
-pm2 start init.js -i max --watch --name pool
+./pool-start.sh
 ```
 
 -------
 ### Watching Pool Logs
 ```
-pm2 logs pool
+./pool-logs-watch.sh # Watch regular logs
 or
-tail -f ~/.pm2/logs/pool-error.log
+./pool-logs-watch.sh " BTCADDRESSTOSCANFOR " # Scan for a coin address
+or
+./pool-logs-watch.sh "block>accepted>" # Scan for accepted blocks
+or
+./pool-logs-watch.sh "block>rejected>" # Scan for a rejected blocks
+or
+./pool-logs-watch.sh "share>accepted>" # Scan for accepted shares
+or
+./pool-logs-watch.sh "share>rejected>" # Scan for rejected shares
+or
+./pool-logs-watch.sh "DIFFICULTY>" # Scan for difficulty updates
 ```
 
 -------
 ### Restarting Pool
 ```
-pm2 stop pool --watch
-pm2 start pool --watch
+./pool-restart
 ```
 
 -------
@@ -78,8 +86,8 @@ pm2 start pool --watch
 ```
 pm2 startup
 ```
-Copy & paste the command (if it asks you to)
-Start the server how you like it
+Copy & paste the command (if it asks you to)<br />
+Save the process list
 ```
 pm2 save
 ```
@@ -87,13 +95,12 @@ pm2 save
 -------
 ### Update Pool Source (should be done monthly at minimum)
 ```
-cd BootNOMP
+cd EasyNOMP
 git pull
 npm update -g
 npm --depth 9999 update
 npm audit fix
-pm2 stop pool --watch
-pm2 start pool --watch
+./pool-restart.sh
 ```
 
 ***EOF***

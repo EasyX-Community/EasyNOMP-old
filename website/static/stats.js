@@ -162,15 +162,15 @@ function TriggerChartUpdates() {
   poolBlockChart.update();
 }
 
-var myJsonGet = $.getJSON('/api/pool_stats', function(data) {
+$.getJSON('/api/pool_stats', function(data) {
   statData = data;
   buildChartData();
   displayCharts();
 });
-setTimeout(function(){ myJsonGet.abort(); }, 60000);
+
+
 
 statsSource.addEventListener('message', function(e) {
-	
   var stats = JSON.parse(e.data);
   statData.push(stats);
 
@@ -214,11 +214,4 @@ statsSource.addEventListener('message', function(e) {
     TriggerChartUpdates();
   }
 
-
-	/* Force update once, fixes a display bug :) */
-	//setTimeout(function() { let a = "" }, 2000);
-	/*var stats = JSON.parse(e.data);
-	statData.push(stats);
-	TriggerChartUpdates();*/
-	
 });

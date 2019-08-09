@@ -2,8 +2,15 @@
     "name": "Placeholder",
     "symbol": "PHL",
     "algorithm": "x16r",
+    
+    "wallet": "https://github.com/xagau/Placeholders-X16R",
 
-    "explorerGetBlockJSON": "https://phl.easyxpool.tk:446/api/getblock?txid=",
-    "explorerGetBlock": "https://phl.easyxpool.tk:446/block/",
-    "explorerGetTX": "https://phl.easyxpool.tk:446/tx/"
+    "explorer":"https://phl.easyxpool.tk/",
+    
+    "explorerGetBlockJSON": "https://phl.easyxpool.tk/api/getblock?txid=",
+    "explorerGetBlock": "https://phl.easyxpool.tk/block/",
+    "explorerGetTX": "https://phl.easyxpool.tk/tx/",
+    
+    "blockTime": 60
+    
 }

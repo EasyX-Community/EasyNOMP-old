@@ -1,6 +1,0 @@
-{
-    "name": "HOdlcoin",
-    "symbol": "HODL",
-    "algorithm": "scrypt",
-	"peerMagic": "f9bcb5d9"
-}

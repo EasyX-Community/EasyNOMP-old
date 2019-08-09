@@ -1,12 +1,32 @@
-# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/foxer666/node-open-mining-portal)
-##### Making it easy to install and configure NOMP!
-##### Current Version: v1.1.4
+# [EasyNOMP](https://github.com/EasyX-Community/EasyNOMP), a fork of [BootNOMP](https://github.com/1301313Y/BootNOMP) and [NOMP](https://github.com/zone117x/node-open-mining-portal)
+***Making it easy to install and configure NOMP!***<br />
+***Current Version: v1.1.4***
 
 -------
 
-### EasyNOMP pool is live @ [http://easyxpool.tk/](http://easyxpool.tk/)
-#### Support via GitHub Issue Tracker and Discord: https://discord.gg/vzcbVNW (Join #easyx-pool and ask @LeshaCat)
-#### Visit the EasyX Community website: http://www.easyx.info/
+***EasyNOMP pool is live, come mine PEXA @ [https://easyxpool.tk/](http://easyxpool.tk/)***<br />
+***EasyNOMP development pool is live @ [https://dev.easyxpool.tk/](https://dev.easyxpool.tk/news)***<br /><br />
+***Visit the EasyX Community website: https://www.easyx.info/***<br />
+***Visit the Pexa Project website: https://www.pexaproject.com/***
+
+***2019/08/08 - I have recently uploaded a fixed version to the main repository. Please update with `git pull`.***
+
+***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***
+
+-------
+### Features
+|   | Feature | Developer(s) |
+| ------------- | ------------- | ------------- |
+| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
+| **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
+| **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **SSL Enabled Dashboard** / To keep you safe &amp; secure! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
+| **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
 
 -------
 
@@ -21,44 +41,6 @@
 ***NOTE:*** _You can fork this repository by clicking "fork" in the top right._
 
 -------
-### !~ DEVELOPMENT WARNING ~!
-***_While the master branch is generally considered stable, LeshaCat is currently working on finalizing v1.1.4 and therefore the master branch will be considered unstable until our first release (v1.1.4) is finalized._***
-
-***NOTE:***  Someone please test Docker, I made a few quick changes. Will come back to it later! ~[LeshaCat](//github.com/leshacat)
-
--------
-### !~ PAYMENT BUG WARNING ~!
-
-https://github.com/bitcoin/bitcoin/issues/14578<br />
-https://github.com/foxer666/node-open-mining-portal/issues/106 (fixed in master)<br />
-https://github.com/foxer666/node-open-mining-portal/issues/145 (still working on a fix)<br />
-
-If you encounter "Work queue depth exceeded" enter into wallet config:
-```
-rpcworkqueue=100
-```
-Restart the wallet + pool
-
-***This crypto is not lost, it is still in your pool wallet.***
-
-***Sorry for the inconvenience!***
-
--------
-### Features
-|   | Feature | Developer(s) |
-| ------------- | ------------- | ------------- |
-| **✓** | **Support for 43 Algorithms** / Such hashing, much blocks! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
-| **✓** | **Algorithm Auto-Switching** / To keep you making profit! | [foxer666](//github.com/foxer666), [zone117x](//github.com/zone117x), [1301313Y](//github.com/1301313Y) |
-| **✓** | **Patches pulled from everywhere** / To keep EasyNOMP working, up to date, and secure! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **SSL Enabled Dashboard** / To keep your miners anonymous &amp; secure! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
-| **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
-
--------
 ### Node Open Mining Portal consists of 3 main modules:
 | Project | Link |
 | ------------- | ------------- |
@@ -70,24 +52,24 @@ Restart the wallet + pool
 ***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
 
 -------
+### Requirements
+***NOTE:*** _These requirements will be installed in the install section!_<br />
+* Coin daemon(s)
+* Node Version Manager
+* Node 8.1.4 or higher
+* Process Manager 2
+* Redis Server
+* ntp
+
+-------
 ### License
 Released under the GNU General Public License v2
 http://www.gnu.org/licenses/gpl-2.0.html
 
 -------
-### Requirements
-***NOTE:*** _These requirements will be installed in the install section!_<br />
-* Node Version Manager
-* Node 8.1.4 or higher
-* Redis Server
-* Process Manager 2
-* ntp
-* Coin daemon(s)
-
--------
 ### Install Pool
 
-Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/INSTALL.md)
+Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/INSTALL.md)
 
 -------
 ### Configure Pool
@@ -97,12 +79,17 @@ Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/Eas
 -------
 ### Run in Docker
 
-Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/DOCKER.md)
+Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/DOCKER.md)
+
+-------
+### Troubleshooting
+
+Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/TROUBLESHOOTING.md)
 
 -------
 ### Changelog
 
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/CHANGELOG.md)
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/master/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
@@ -118,7 +105,7 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 | ✓ | __Scrypt__ | tested with AntiLiteCoin, 1CREDIT, ArgusCoin, WAYAWOLFCOIN and many others |
 | ✓ | __SHA256__ | tested with VCOIN, don't use with BTC, no Segwit tested |
 | ✓ | __X11__ | tested with BrainCoin, CannabisCoin, AdzCoin and many others |
-| ✓ | __X16r__ | tested with RavenCoin |
+| ✓ | __X16r__ | tested with RavenCoin, PexaCoin, Placeholders, TragoCoin - Fail: BitCash |
 | ✓ | __Yescrypt__ | needs tests, though should work |
 | ✓ | __YescryptR16__ | needs tests, though should work |
 | ✓ | __YescryptR32__ | currently being tested with WaviCoin. shares work, payments unconfirmed |
@@ -179,7 +166,8 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 ### Credits
 | User | Comment|
 | ------------- | ------------- |
-| [foxer666](//github.com/foxer666) | How could anyone forget the original [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) dev? |
+| [foxer666](//github.com/foxer666) | How could anyone forget the original [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) devs? |
+| [foxer666](//github.com/zone117x) | How could anyone forget the original [zone117x/node-open-mining-portal](https://github.com/zone117x/node-open-mining-portal) devs? |
 | [1301313Y](//github.com/1301313Y) | How could anyone forget the original [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) dev? |
 | [LeshaCat](//github.com/leshacat) | How could anyone forget the original [leshacat/EasyNOMP](https://github.com/leshacat/EasyNOMP) dev?<br /> - Fixed lots of documentation, configuration, and block explorer |
 | &nbsp; | &nbsp; |
@@ -201,16 +189,16 @@ Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Co
 
 ### Plz Buy Me Some Coffee?
 
-I drink about 3 pots a day... I will love you forever!
+This is my new Full-Time job and it pays nothing. I drink about 3 pots a day... I will love you forever!
 
 
-BTC: `1PvSxjrpzNXCuBHCupAGuuzeUe5DE7kB7H`
+BTC: `18TmiWzbMLyf7MvQMcNWh3hUBVrxBgzrWi`
 
-LTC: `LU6x6qjdMz4btBEhUU1AukJfUNmrwuaJJD`
+LTC: `LX1fUwLVcAaRXvP67ZcqUvjjteaKx1nAvL`
 
-ETH/ERC20: `0x67a5A070012aBa9dFB50e571A40b3263C258d7D5`
+ETH/ERC20: `0x52fD0B6847E1D3cEc5600359f24d671FdE2Bc65B`
 
-XMR: `88LqrMZhweMGP61EUrHbkqRcxcYuL7fNRG3UrBYW8eGaN19KCjAuM3fTcr5BniFsf2g8Dmi7YVchBBmbHjWdCPkm1axmMUD`
+XMR: `4AVabKt1zGhUckqWC5DKtkcc49ChYFuSETzvDZFfVnUYYY5vC4CSZ9xYzmCWvx7ePYZ9YvxgYbYsLL1L9TfQy2hi5Awsc7d`
 
 -------
 
