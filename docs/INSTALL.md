@@ -51,11 +51,10 @@ redis-cli FLUSHALL
 ```
 git clone https://github.com/leshacat/EasyNOMP.git
 cd BootNOMP
-pm2 init
 npm install
 npm update
 npm audit fix
-pm2 start init.js -i max --watch --name pool
+./pool-start.sh
 ```
 
 -------
@@ -87,13 +86,12 @@ pm2 save
 -------
 ### Update Pool Source (should be done monthly at minimum)
 ```
-cd BootNOMP
+cd EasyNOMP
 git pull
 npm update -g
 npm --depth 9999 update
 npm audit fix
-pm2 stop pool --watch
-pm2 start pool --watch
+./pool-restart.sh
 ```
 
 ***EOF***
