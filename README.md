@@ -62,6 +62,36 @@
 * Coin daemon(s)
 
 -------
+### License
+Released under the GNU General Public License v2
+http://www.gnu.org/licenses/gpl-2.0.html
+
+-------
+### Install Pool
+
+Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/INSTALL.md)
+
+-------
+### Configure Pool
+
+Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/EasyX-Community/EasyNOMP/wiki
+
+-------
+### Run in Docker
+
+Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/DOCKER.md)
+
+-------
+### Changelog
+
+Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/CHANGELOG.md)
+
+-------
+### Troubleshooting
+
+Troubleshooting is in in the directory [docs/TROUBLESHOOTING.md](https://github.com/EasyX-Community/EasyNOMP/master/docs/CHANGELOG.md)
+
+-------
 ### !~ PAYMENT BUG WARNING ~!
 
 https://github.com/bitcoin/bitcoin/issues/14578<br />
@@ -77,31 +107,6 @@ Restart the wallet + pool
 ***This crypto is not lost, it is still in your pool wallet. It will payout on restart :)***
 
 ***Sorry for the inconvenience!***
-
--------
-### License
-Released under the GNU General Public License v2
-http://www.gnu.org/licenses/gpl-2.0.html
-
--------
-### Install Pool
-
-Install instructions are in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/INSTALL.md)
-
--------
-### Configure Pool
-
-Pool configuration instructions are at the EasyNOMP Wiki: https://github.com/EasyX-Community/EasyNOMP/wiki
-
--------
-### Run in Docker
-
-Docker instructions are in in the directory [docs/README.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/DOCKER.md)
-
--------
-### Changelog
-
-Changelog is in in the directory [docs/CHANGELOG.md](https://github.com/EasyX-Community/EasyNOMP/blob/development/docs/CHANGELOG.md)
 
 -------
 ### Hashing algorithms
