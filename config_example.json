@@ -8,7 +8,7 @@
     
     "defaultCoin": "pexacoin",
     
-    "poollogo": "",
+    "poollogo": "/local/file/path/or_a_web_address.to.png",
     
     "discordtwitterfacebook": "Join our #mining channel on Discord: <a href='https://discord.gg/vzcbVNW' target='_blank'>https://discord.gg/vzcbVNW</a>",
     
