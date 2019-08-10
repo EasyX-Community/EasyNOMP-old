@@ -27,7 +27,7 @@
 | **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Matomo/Livezilla Support** / To make tracking and support easier! | [LeshaCat](//github.com/leshacat) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @LeshaCat! | [LeshaCat](//github.com/leshacat) |
 
 -------
 
