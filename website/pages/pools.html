@@ -73,7 +73,7 @@
             				{{ total += rewardRecipients[r]; }}
             			{{ } }}
             		<td style="text-align:center;vertical-align: middle;">{{=total}}%</td>
-			<td style="text-align:center;vertical-align: middle;">{{=it.poolsConfigs[pool].donateaddress}}</tr>
+			<td style="text-align:center;vertical-align: middle;">{{=(it.poolsConfigs[pool].donateaddress||'none')}}</tr>
 			{{ } }}
 	  </tbody>
 	</table>
