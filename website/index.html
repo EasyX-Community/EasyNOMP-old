@@ -299,7 +299,16 @@
 
                         {{ for(var pool in it.stats.pools) { }}
                         <li>
-            			     <a class="bg-dark text-light pl-3" href="/stats/{{=it.stats.pools[pool].name}}">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a>
+
+                                {{ var ttotal = 0.0; }}
+                    
+                    		    {{ var rewardRecipients = it.stats.pools[pool].rewardRecipients || {}; }}
+                                {{ for (var r in rewardRecipients) { }}
+                                    {{ ttotal += rewardRecipients[r]; }}
+                                {{ } }}                      
+                        
+            			     <a class="bg-dark text-light pl-3" href="/stats/{{=it.stats.pools[pool].name}}">&nbsp;&nbsp;<img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" alt="icon" /> {{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}} ({{=ttotal}} %)</a>
+            			     
             			</li>
                         {{ } }}
                         
