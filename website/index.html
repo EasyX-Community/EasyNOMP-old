@@ -96,12 +96,14 @@
         <script src="/static/stat_tracker.js"></script>
         
         <!--<link rel="stylesheet" href="/static/style.css">-->
-
-        {{=it.portalConfig.trackingcode}}
+        
+        {{=it.portalConfig.trackingcode.join('\n')}}
+        
         
     </head>
     
-    {{=it.portalConfig.livezillacode}}
+    {{=it.portalConfig.livezillacode.join('\n')}}
+    
     
     <body>
         <header>
