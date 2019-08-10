@@ -65,7 +65,7 @@
               </tr>
 		
 		<tr>
-		<td colspan="12" style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}} Donations: {{=(it.poolsConfigs[pool].donateaddress||'')}}</td>
+		<td colspan="12" style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}} Donations: {{=(it.poolsConfigs[pool].donateaddress||'none')}}</td>
 		</tr>
 
               {{ break; }}
