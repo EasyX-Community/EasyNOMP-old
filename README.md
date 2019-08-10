@@ -23,10 +23,11 @@
 | **✓** | **SSL Enabled Dashboard** / To keep you safe &amp; secure! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Clear Documentation** / To help you install & configure EasyNOMP | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Additional Statistics Information** / To keep you informed | [1301313Y](//github.com/1301313Y) |
-| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **Install Script** / No dependancy problems! | [LeshaCat](//github.com/leshacat) |
 | **✓** | **SEO Optimized** / So you don't have to! | [1301313Y](//github.com/1301313Y), [LeshaCat](//github.com/leshacat) |
 | **✓** | **Donation Addresses** / To make donation collection easier! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Matomo/Livezilla Support** / To make tracking and support easier! | [LeshaCat](//github.com/leshacat) |
+| **✓** | **Live support on Discord** / Join &#35;easynomp and ask @Shawn! | [LeshaCat](//github.com/leshacat) |
 
 -------
 
