@@ -128,12 +128,10 @@ module.exports = function(portalConfig, poolConfigs) {
       case 'pool_fees':
         res.header('Content-Type', 'application/json');
              
-            
-            /*var o = {'payoutscheme':"PROP", pools : [] } // empty Object
+            /* leshacat code :) */
+            var o = { pools : [] }; // empty Object
             
             for (var pool in poolConfigs) {
-                
-                var key = pool;
                 
                 var ttotal = 0.0;
                 
@@ -142,15 +140,10 @@ module.exports = function(portalConfig, poolConfigs) {
                     ttotal += rewardRecipients[r];
                 }
                 
-                var data = {
-                    pool: ttotal,
-                };
-                
-                o.pools[key].push(data);
+                o.pools.push({"coin":pool,"fee": ttotal,"payoutscheme":"PROP"});
                 
             }
-            
-            res.end(JSON.stringify(o));*/
+            res.end(JSON.stringify(o));
         
         return;
       case 'pool_stats':
