@@ -140,5 +140,10 @@
         "useCryptsy": true,
         "useMintpal": true,
         "useBittrex": true
-    }
+    },
+    
+    "trackingcode": "",
+                    
+    "livezillacode": ""
+
 }
