@@ -11,7 +11,7 @@
 
 ***2019/08/11 - I have uploaded a SECURITY UPDATE to anonymize IP's within logfiles. Please see issue [ticket #49](https://github.com/EasyX-Community/EasyNOMP/issues/49)***<br />
 ***2019/08/08 - I have uploaded a fixed version to the main repository. [https://dev.easyxpool.tk/](https://dev.easyxpool.tk/news)***<br />
-***To update EasyNOMP check out issue [ticket #50](https://github.com/EasyX-Community/EasyNOMP/issues/50#issue-479355535)***
+****To update EasyNOMP check out issue [ticket #50](https://github.com/EasyX-Community/EasyNOMP/issues/50#issue-479355535)***
 
 ***EasyNOMP Discord support is DISCONTINUED! Please create an issue ticket for bugs and features.***
 
