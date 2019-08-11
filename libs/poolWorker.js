@@ -2,10 +2,13 @@ var Stratum = require('stratum-pool');
 var redis = require('redis');
 var net = require('net');
 
+const functions = require('./functions.js');
+
 var MposCompatibility = require('./mposCompatibility.js');
 var ShareProcessor = require('./shareProcessor.js');
 
 const loggerFactory = require('./logger.js');
+
 
 module.exports = function() {
   const logger = loggerFactory.getLogger('PoolWorker', 'system');
@@ -198,7 +201,12 @@ module.exports = function() {
 
         var authString = authorized ? 'Authorized' : 'Unauthorized ';
 
-        logger.debug('%s %s:%s [%s]', authString, workerName, password, ip);
+        
+        // PASSWORD "c=pexa,m=solo" etc MOUSE422
+        logger.debug('AUTH>TRUE> authstr [%s] worker [%s] passwd [%s] ip [%s]', authString, workerName, password, functions.anonymizeIP(ip));
+        
+                
+        
         callback({
           error: null,
           authorized: authorized,
@@ -245,10 +253,10 @@ module.exports = function() {
                 } else if (data.shareDiff > 1000000) {
                     logger.warn('SHARE>WARN> Share was found with diff higher than 1.000.000!');
                 }
-                logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: %s [%s]', data.job, data.difficulty, data.shareDiff, workerInfo[0], workerInfo[1], data.ip);                
+                logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: %s [%s]', data.job, data.difficulty, data.shareDiff, workerInfo[0], workerInfo[1], functions.anonymizeIP(data.ip));                
             } 
             else if (!isValidShare) {
-                logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: %s reason: %s [%s]', data.job, data.difficulty, workerInfo[0], workerInfo[1], data.error, data.ip);
+                logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: %s reason: %s [%s]', data.job, data.difficulty, workerInfo[0], workerInfo[1], data.error, functions.anonymizeIP(data.ip));
             }
         }
         else {
@@ -258,10 +266,10 @@ module.exports = function() {
                 } else if (data.shareDiff > 1000000) {
                     logger.warn('SHARE>WARN> Share was found with diff higher than 1.000.000!');
                 }
-                logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: none [%s]', data.job, data.difficulty, data.shareDiff, workerStr, data.ip);                
+                logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: none [%s]', data.job, data.difficulty, data.shareDiff, workerStr, functions.anonymizeIP(data.ip));                
             } 
             else if (!isValidShare) {
-                logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: none reason: %s [%s]', data.job, data.difficulty, workerStr, data.error, data.ip);
+                logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: none reason: %s [%s]', data.job, data.difficulty, workerStr, data.error, functions.anonymizeIP(data.ip));
             }
         }
 

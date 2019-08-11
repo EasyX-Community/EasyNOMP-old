@@ -139,8 +139,13 @@ module.exports = function(portalConfig, poolConfigs) {
                 for (var r in rewardRecipients) {
                     ttotal += rewardRecipients[r];
                 }
+
+                var intMin = Math.floor(portalStats.stats.pools[pool].paymentProcessing.paymentInterval/60);
+                var intSec = portalStats.stats.pools[pool].paymentProcessing.paymentInterval % 60;
+
+                var intMinPymt = portalStats.stats.pools[pool].paymentProcessing.minimumPayment;
                 
-                o.pools.push({"coin":pool,"fee": ttotal,"payoutscheme":"PROP"});
+                o.pools.push({"coin":pool,"fee": ttotal,"payoutscheme":"PROP","minimum":intMinPymt,"interval":intMin + "m " + intSec + "s"});
                 
             }
             res.end(JSON.stringify(o));

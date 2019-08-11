@@ -17,7 +17,7 @@
         "url": "https://github.com/EasyX-Community/EasyNOMP/issues"
     },
     "license": "GPL-2.0",
-    "author": "Shawn Read",
+    "author": "Leshacat",
     "contributors": [
         "leshacat",
         "devnulled",
@@ -56,6 +56,7 @@
         "express": "^4.16.4",
         "form-data": "^2.3.3",
         "http-errors": "^1.7.1",
+        "ip-anonymize": "^0.1.0",
         "ls": "^0.2.1",
         "mime-types": "^2.1.21",
         "moment": "^2.23.0",
