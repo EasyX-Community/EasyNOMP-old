@@ -140,12 +140,14 @@ module.exports = function(portalConfig, poolConfigs) {
                     ttotal += rewardRecipients[r];
                 }
 
-                var intMin = Math.floor(portalStats.stats.pools[pool].paymentProcessing.paymentInterval/60);
-                var intSec = portalStats.stats.pools[pool].paymentProcessing.paymentInterval % 60;
+                var intMin = Math.floor(poolConfigs[pool].paymentProcessing.paymentInterval/60) || 0;
+                var intSec = (poolConfigs[pool].paymentProcessing.paymentInterval % 60) || 0;
 
-                var intMinPymt = portalStats.stats.pools[pool].paymentProcessing.minimumPayment;
+                var intMinPymt = poolConfigs[pool].paymentProcessing.minimumPayment || 0;
                 
-                o.pools.push({"coin":pool,"fee": ttotal,"payoutscheme":"PROP","minimum":intMinPymt,"interval":intMin + "m " + intSec + "s"});
+                var tmpstr = intMin.toString() + "m " + intSec.toString() + "s";                
+                
+                o.pools.push({"coin":pool, "fee": ttotal, "payoutscheme":"PROP", "interval":tmpstr, "minimum": intMinPymt}); //
                 
             }
             res.end(JSON.stringify(o));
