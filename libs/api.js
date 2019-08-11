@@ -140,12 +140,14 @@ module.exports = function(portalConfig, poolConfigs) {
                     ttotal += rewardRecipients[r];
                 }
 
-                var intMin = Math.floor(poolConfigs[pool].paymentProcessing.paymentInterval/60) || 0;
-                var intSec = (poolConfigs[pool].paymentProcessing.paymentInterval % 60) || 0;
+                var intDays = Math.floor(poolConfigs[pool].paymentProcessing.paymentInterval / 86400);
+                var intHrs = Math.floor((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) / 3600);
+                var intMin = Math.floor(((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) % 3600) / 60);
+                var intSec = Math.floor(((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) % 3600) % 60);
 
                 var intMinPymt = poolConfigs[pool].paymentProcessing.minimumPayment || 0;
                 
-                var tmpstr = intMin.toString() + "m " + intSec.toString() + "s";                
+                var tmpstr = intDays.toString() + "d " + intHrs.toString() + "h " + intMin.toString() + "m " + intSec.toString() + "s";                
                 
                 o.pools.push({"coin":pool, "fee": ttotal, "payoutscheme":"PROP", "interval":tmpstr, "minimum": intMinPymt}); //
                 
