@@ -4,6 +4,11 @@
 
     "devmode": false,
     
+    "logips": true,       
+    "anonymizeips": true,
+    "ipv4bits": 16,
+    "ipv6bits": 16,
+    
     "poolwarningmsg": "WARNING: POOL IS DEFAULT CONFIGURATION",
     
     "defaultCoin": "pexacoin",
