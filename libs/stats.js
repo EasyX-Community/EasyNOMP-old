@@ -297,7 +297,10 @@ module.exports = function(portalConfig, poolConfigs) {
             var coinStats = {
               name: coinName,
               explorerGetBlock: poolConfigs[coinName].coin.explorerGetBlock,
+              
               blockTime: poolConfigs[coinName].coin.blockTime,
+              blockChange: poolConfigs[coinName].coin.blockChange,
+              
               explorerGetBlockJSON: poolConfigs[coinName].coin.explorerGetBlockJSON,
               explorerGetTX: poolConfigs[coinName].coin.explorerGetTX,
               symbol: poolConfigs[coinName].coin.symbol.toUpperCase(),

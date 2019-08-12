@@ -11,6 +11,6 @@
     "explorerGetBlock": "https://bitc.easyxpool.tk/block/",
     "explorerGetTX": "https://bitc.easyxpool.tk/tx/",
     
-    "blockTime": 60
-    
+    "blockTime": 60,
+    "blockChange": 2016
 }

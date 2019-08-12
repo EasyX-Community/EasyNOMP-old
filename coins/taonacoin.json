@@ -11,6 +11,7 @@
     "explorerGetBlock": "https://tna.easyxpool.tk:453/block/",
     "explorerGetTX": "https://tna.easyxpool.tk:453/tx/",
     
-    "blockTime": 60
+    "blockTime": 60,
+    "blockChange": 960
     
 }

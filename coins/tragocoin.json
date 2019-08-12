@@ -11,6 +11,7 @@
     "explorerGetBlock": "https://trago.easyxpool.tk/block/",
     "explorerGetTX": "https://trago.easyxpool.tk/tx/",
     
-    "blockTime": 60
+    "blockTime": 60,
+    "blockChange": 2016
     
 }

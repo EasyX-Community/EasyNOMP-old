@@ -47,34 +47,45 @@
 
 				<td scope="row" style="text-align:center;vertical-align: middle;">
 				{{ for(var pool2 in it.stats.pools) { }}
-				{{ if(pool2 !== pool) continue; }}
+				{{ if(pool2 != pool) continue; }}
 				{{=Object.keys(it.poolsConfigs[pool2].ports)}}
 				{{ break; }}
 				{{ } }}
 				</td>
 		 			
-		 			<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].poolStats.networkSolsString}}</td>
+	 			<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].poolStats.networkSolsString}}</td>
+			
+				<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].hashrateString}}</td>
 				
-					<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].hashrateString}}</td>
-					
-					<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].blocks.confirmed}}</td>
-					
-					<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].blocks.pending}}</td>
+				<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].blocks.confirmed}}</td>
 				
-		 			<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].workerCount}}</td>
-				
-					<td scope="row" style="text-align:center;vertical-align: middle;">{{=Number(Math.round(it.stats.pools[pool].poolStats.networkDiff + 'e' + 4) + 'e-' + 4)}}</td>
-				
-					<td scope="row" style="text-align:center;vertical-align: middle;">{{=961-(it.stats.pools[pool].poolStats.networkBlocks%960)}} blocks ({{=3*(961-(it.stats.pools[pool].poolStats.networkBlocks%960))/60}} hours)</td>
+				<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].blocks.pending}}</td>
+			
+	 			<td style="text-align:center;vertical-align: middle;">{{=it.stats.pools[pool].workerCount}}</td>
+			
+				<td scope="row" style="text-align:center;vertical-align: middle;">{{=Number(Math.round(it.stats.pools[pool].poolStats.networkDiff + 'e' + 4) + 'e-' + 4)}}</td>
+			
+				{{ var blocktime = it.stats.pools[pool].blockTime; }}
+				{{ var blockchange = it.stats.pools[pool].blockChange; }}				
+                {{ var blockheight = it.stats.pools[pool].poolStats.networkBlocks; }}
+                
+                {{ var changehours = Number.parseFloat((((blockchange+1) - (blockheight % blockchange)) / blocktime)).toFixed(1); }}
+                {{ var changeblocks = ((blockchange+1) - (blockheight % blockchange)); }}
+			    
+				<td scope="row" style="text-align:center;vertical-align: middle;">{{=changeblocks}} blocks (appx. {{=changehours}} hours)</td>
             				
-            				{{ var total = 0.0; }}
-		            		{{ var rewardRecipients = it.stats.pools[pool].rewardRecipients || {}; }}
-            				{{ for (var r in rewardRecipients) { }}
-            				{{ total += rewardRecipients[r]; }}
-            			{{ } }}
-            		<td style="text-align:center;vertical-align: middle;">{{=total}}%</td>
-			<td style="text-align:center;vertical-align: middle;">{{=(it.poolsConfigs[pool].donateaddress||'none')}}</tr>
+				{{ var total = 0.0; }}
+        		{{ var rewardRecipients = it.stats.pools[pool].rewardRecipients || {}; }}
+				{{ for (var r in rewardRecipients) { }}
+    				{{ total += rewardRecipients[r]; }}
+    			{{ } }}
+            		
+                <td style="text-align:center;vertical-align: middle;">{{=total}}%</td>
+            		
+                <td style="text-align:center;vertical-align: middle;">{{=(it.poolsConfigs[pool].donateaddress||'none')}}</tr>
+			
 			{{ } }}
+			
 	  </tbody>
 	</table>
 </div>

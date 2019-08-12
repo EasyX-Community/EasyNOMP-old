@@ -13,6 +13,7 @@
     "explorerGetBlock": "http://explorer.securetag.io:3001/block/",
     "explorerGetTX": "http://explorer.securetag.io:3001/tx/",
     
-    "blockTime": 60
-
+    "blockTime": 60,
+    "blockChange": 960
+    
 }
