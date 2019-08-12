@@ -63,7 +63,7 @@
 				{{ var blockchange = it.stats.pools[pool].blockChange; }}				
                 {{ var blockheight = it.stats.pools[pool].poolStats.networkBlocks; }}
                 
-                {{ var changehours = Number.parseFloat((((blockchange+1) - (blockheight % blockchange)) / blocktime)).toFixed(2); }}
+                {{ var changehours = Number.parseFloat((((blockchange+1) - (blockheight % blockchange)) / blocktime)).toFixed(1); }}
                 {{ var changeblocks = ((blockchange+1) - (blockheight % blockchange)); }}
                 
 				<td colspan='2' style="text-align:center;vertical-align: middle;">Diff change in: {{=changeblocks}} blocks (appx. {{=changehours}} hours)</td>
