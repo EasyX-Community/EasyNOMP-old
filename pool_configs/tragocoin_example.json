@@ -13,6 +13,7 @@
 
     "paymentProcessing": {
         "enabled": true,
+        "schema": "PROP",
         "paymentInterval": 300,
         "minimumPayment": 0.25,
         "daemon": {
