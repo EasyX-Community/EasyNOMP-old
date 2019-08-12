@@ -1,6 +1,8 @@
 var redis = require('redis');
 var async = require('async');
 
+const functions = require('./functions.js');
+
 /*var JSONStream = require('JSONStream');
 var es = require('event-stream');*/
 
@@ -140,16 +142,13 @@ module.exports = function(portalConfig, poolConfigs) {
                     ttotal += rewardRecipients[r];
                 }
 
-                var intDays = Math.floor(poolConfigs[pool].paymentProcessing.paymentInterval / 86400);
-                var intHrs = Math.floor((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) / 3600);
-                var intMin = Math.floor(((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) % 3600) / 60);
-                var intSec = Math.floor(((poolConfigs[pool].paymentProcessing.paymentInterval % 86400) % 3600) % 60);
+                var intSec = poolConfigs[pool].paymentProcessing.paymentInterval;
+                
+                tmpStr = functions.secToDHMSStr(intSec);
 
-                var intMinPymt = poolConfigs[pool].paymentProcessing.minimumPayment || 0;
+                var intMinPymt = poolConfigs[pool].paymentProcessing.minimumPayment || 0;              
                 
-                var tmpstr = intDays.toString() + "d " + intHrs.toString() + "h " + intMin.toString() + "m " + intSec.toString() + "s";                
-                
-                o.pools.push({"coin":pool, "fee": ttotal, "payoutscheme":"PROP", "interval":tmpstr, "minimum": intMinPymt}); //
+                o.pools.push({"coin":pool, "fee": ttotal, "payoutscheme":"PROP", "interval":intSec, "intervalstr":tmpStr, "minimum": intMinPymt}); //
                 
             }
             res.end(JSON.stringify(o));
