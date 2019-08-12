@@ -11,6 +11,7 @@
     "explorerGetBlock": "http://explorer.mogwaicoin.org/block/",
     "explorerGetTX": "http://explorer.mogwaicoin.org/tx/",
     
-    "blockTime": 60
-
+    "blockTime": 60,
+    "blockChange": 960
+    
 }

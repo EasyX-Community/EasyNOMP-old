@@ -11,6 +11,7 @@
     "explorerGetBlock": "http://rvnhodl.com/block/",
     "explorerGetTX": "http://rvnhodl.com/tx/",
     
-    "blockTime": 60
+    "blockTime": 60,
+    "blockChange": 960
     
 }

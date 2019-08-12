@@ -11,6 +11,7 @@
     "explorerGetBlock": "https://pexa.easyxpool.tk/block/",
     "explorerGetTX": "https://pexa.easyxpool.tk/tx/",
     
-    "blockTime": 60
+    "blockTime": 60,
+    "blockChange": 2016
     
 }
