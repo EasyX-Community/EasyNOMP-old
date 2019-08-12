@@ -59,12 +59,12 @@
                 <!--<td style="text-align:center;">Connections:</td>
                 <td style="text-align:center;">{{=it.stats.pools[pool].poolStats.networkConnections}}</td>-->
 			
-				{{ var blocktime = it.stats.pools[pool].blockTime; }}
-				{{ var blockchange = it.stats.pools[pool].blockChange; }}				
-                {{ var blockheight = it.stats.pools[pool].poolStats.networkBlocks; }}
+				{{ var blocktime = it.stats.pools[pool].blockTime || 0; }}
+				{{ var blockchange = it.stats.pools[pool].blockChange || 0; }}				
+                {{ var blockheight = it.stats.pools[pool].poolStats.networkBlocks || 0; }}
                 
-                {{ var changehours = Number.parseFloat((((blockchange+1) - (blockheight % blockchange)) / blocktime)).toFixed(1); }}
-                {{ var changeblocks = ((blockchange+1) - (blockheight % blockchange)); }}
+                {{ var changehours = Number.parseFloat((((blockchange) - (blockheight % blockchange)) / blocktime)).toFixed(2) || 0; }}
+                {{ var changeblocks = ((blockchange) - (blockheight % blockchange)) || 0; }}
                 
 				<td colspan='2' style="text-align:center;vertical-align: middle;">Diff change in: {{=changeblocks}} blocks (appx. {{=changehours}} hours)</td>
                
