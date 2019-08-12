@@ -9,7 +9,7 @@ Simply create a user for the pool to run as, and log in to that user.
 Run this command
 
 ```
-git clone https://github.com/EasyX-Community/EasyNOMP ; cd EasyNOMP ; ./install.sh ;
+git clone https://github.com/EasyX-Community/EasyNOMP.git ; cd EasyNOMP ; ./install.sh ;
 ```
 **Done!**
 
