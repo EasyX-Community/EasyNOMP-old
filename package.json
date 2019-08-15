@@ -71,7 +71,7 @@
         "redis-commands": "^1.4.0",
         "request": "^2.88.0",
         "safe-buffer": "^5.1.2",
-        "semver": "^5.6.0",
+        "semver": "^5.7.1",
         "sma": "^0.1.1",
         "sshpk": "^1.15.2",
         "stratum-pool": "git://github.com/EasyX-Community/node-stratum-pool.git",
