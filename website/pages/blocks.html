@@ -227,15 +227,18 @@ table {
 
                   // IF STATEMENT HERE
                   if (("{{=pool}}" === value) || ("all" === value)) {
-    
-                      dataTable.row.add([
-            
-            	        '<div class="vhmiddle"><span class="tableRowStyle"><img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" /> <a class="bg-light text-dark" href="/stats/{{=it.stats.pools[pool].name}}">{{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a></span></div>',
-            
-                                    
-            
-            	        '<div class="vhmiddle"><span class="tableRowStyle"><a class="bg-light text-dark" href="{{=it.stats.pools[pool].explorerGetBlock + payment.blkid}}" target="_blank"><img src="/static/img/pow.png" style="height: 28px;" alt="icon" />{{=Math.max.apply(null, payment.blocks)}}</a>&nbsp;&nbsp;<a class="bg-light text-dark" href="{{=it.stats.pools[pool].explorerGetBlockJSON + payment.blkid}}" target="_blank"><img src="/static/img/JSON.png" style="height: 25px;" /></a><span></div>',
-            
+                  
+                        // Get the date, check if its within the last X days/hours. Yes: Display No: No display
+                        // We are inside JavaScript here. Prolly better to do this in the API
+
+                        dataTable.row.add([
+                        
+                        '<div class="vhmiddle"><span class="tableRowStyle"><img src="/static/icons/{{=it.stats.pools[pool].name}}.png" style="height: 24px;" /> <a class="bg-light text-dark" href="/stats/{{=it.stats.pools[pool].name}}">{{=it.stats.pools[pool].name.charAt(0).toUpperCase() + it.stats.pools[pool].name.slice(1)}}</a></span></div>',
+                        
+                                
+                        
+                        '<div class="vhmiddle"><span class="tableRowStyle"><a class="bg-light text-dark" href="{{=it.stats.pools[pool].explorerGetBlock + payment.blkid}}" target="_blank"><img src="/static/img/pow.png" style="height: 28px;" alt="icon" />{{=Math.max.apply(null, payment.blocks)}}</a>&nbsp;&nbsp;<a class="bg-light text-dark" href="{{=it.stats.pools[pool].explorerGetBlockJSON + payment.blkid}}" target="_blank"><img src="/static/img/JSON.png" style="height: 25px;" /></a><span></div>',
+                        
                         '<div class="vhmiddle"><span class="tableRowStyle">' + new Date(parseInt("{{=payment.time}}")).toISOString().replace(/([^T]+)T([^\.]+).*/g, '$1 $2').toUpperCase() + '</span></div>',
                         
                         '<div class="vhmiddle"><span class="tableRowStyle"><a class="bg-light text-dark" href="{{=it.stats.pools[pool].explorerGetTX + payment.txid}}" target="_blank">{{=payment.txid}}</a></span></div>',
@@ -243,8 +246,9 @@ table {
                         '<div class="vhmiddle"><span class="tableRowStyle">{{=payment.miners}}</span></div>',
                         '<div class="vhmiddle"><span class="tableRowStyle">{{=parseFloat(payment.paid).toFixed(8)}}</span></div>',
                         '<div class="vhmiddle"><span class="tableRowStyle"><span class="badge badge-success">Paid</span></span></div>',
-                      ]).draw(true);
-                  
+                        
+                        ]).draw(true);
+  
                   }
     
               "{{ } }}";
