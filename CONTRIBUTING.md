@@ -7,9 +7,9 @@
 
 As long as you are not changing default donation addresses, etc. and the code change is good we will merge it.
 
-=====
+-------
 
-OPEN BOUNTIES:
+## OPEN BOUNTIES:
 
 negotiate - Web UI design change (menu, charts, graphs, guages, etc.)
 negotiate - NATIVE android app to access API and display stats in its own mobile design. APPS MUST be native, I will not accept web browser apps.
