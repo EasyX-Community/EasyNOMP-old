@@ -88,12 +88,18 @@ module.exports = function(poolConfig){
         redisCommands.push(['zadd', coin + ':hashrate', dateNow / 1000 | 0, hashrateData.join(':')]);
 
         if (isValidBlock){
+            
             redisCommands.push(['rename', coin + ':shares:roundCurrent', coin + ':shares:round' + shareData.height]);
+            
             redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height].join(':')]);
+            
             redisCommands.push(['hincrby', coin + ':stats', 'validBlocks', 1]);
+            
         }
         else if (shareData.blockHash){
+            
             redisCommands.push(['hincrby', coin + ':stats', 'invalidBlocks', 1]);
+            
         }
 
         connection.multi(redisCommands).exec(function(err, replies){
