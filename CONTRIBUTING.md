@@ -7,7 +7,7 @@
 
 As long as you are not changing default donation addresses, etc. and the code change is good we will merge it.
 
-====================
+=====
 
 OPEN BOUNTIES:
 
