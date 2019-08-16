@@ -37,10 +37,11 @@ module.exports = function () {
 
     var logSystem = 'Website';
 
+    
+
     var pageFiles = {
         'home.html': '',                                // home page
         'index.html': 'index',                          // index page
-        'news.html': 'news',                            // news page
         'getting_started.html': 'getting_started',      // getting started page
         'dashboard.html': 'dashboard',                  // dashboard page
     	'pools.html': 'pools',                          // all pool stats page
@@ -52,7 +53,19 @@ module.exports = function () {
         'miner_stats.html': 'miner_stats',              // individual miner stats (skeleton?)
         'pool_stats.html': 'pool_stats'                 // individual pool stats (skeleton?)
     };
-
+    
+    // LeshaCat code to decide wether to load example page or real news page.    
+    var mainScriptPath = require('path').dirname(require.main.filename)    
+    if (fs.existsSync(mainScriptPath + '/website/pages/news.html')) {
+        // Do something
+        pageFiles['news.html'] = "news";                // news page
+        logger.debug("Loaded CUSTOM news.html"); 
+    }
+    else {
+        pageFiles['news_example.html'] = "news";        // news page
+        logger.debug("Loaded EXAMPLE news_example.html");
+    }    
+    
     var pageTemplates = {};
 
     var pageProcessed = {};
