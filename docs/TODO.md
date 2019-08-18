@@ -3,7 +3,7 @@
 -------
 
 **NOTE:** Ordered by priority
-**NOTE:** Order temporarily messed up... Will look at it later.
+**NOTE:** Order messed up... More of list of ideas.
 
 **[ ?=question ] [ !=important ] [ I=inprogress ] [ T=testing ] [ X=completed ]**
 
@@ -48,6 +48,6 @@ Also I don't care to learn Redis, so adding new statistics or database options y
 
 I have many other ideas but not going to list here.
 
-LeshaCat CURRENT Main focus: Block Explorer.
+LeshaCat CURRENT Main focus: Connect string features c=PEXA, d=30, m=solo, etc. Payment processor, API, Logging
 
 ***EOF***
