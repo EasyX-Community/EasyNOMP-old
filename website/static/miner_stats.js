@@ -36,6 +36,7 @@ function displayCharts() {
 	  max: 100,
 	  symbol: '%',
 	  pointer: true,
+      decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
 	    bottomlength: 10,
@@ -50,15 +51,17 @@ function displayCharts() {
 	  levelColors:["#e8e84c", "#6cdb5e"]
 	});
 
-	var tmpInt = Math.min(100 - (Math.floor(10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100), 100);	
+	var tmpInt = Math.min((((10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100)), 100);	
+	var tmpInt2 = (100 - tmpInt);	
 	
 	invalidGage = new JustGage({
 	  id: "validShare",
-	  value: tmpInt,
+	  value: tmpInt2,
 	  min: 0,
 	  max: 100,
 	  symbol: '%',
 	  pointer: true,
+      decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
 	    bottomlength: 10,
@@ -68,9 +71,9 @@ function displayCharts() {
 	    stroke_width: 3,
 	    stroke_linecap: 'round'
 	  },
-	  title: "Recent Invalid Shares",
+	  title: "Invalid Shares",
 	  gaugeWidthScale: 0.6,
-	  levelColors:["#e8e84c", "#f73d3d"]
+	  levelColors:["#f9a42c", "#f21f10"]
 	});
 	workerGage= new JustGage({
 	  id: "workerDominance",
@@ -79,6 +82,7 @@ function displayCharts() {
 	  max: 100,
 		symbol: '%',
 	  pointer: true,
+      decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
 	    bottomlength: 10,
@@ -103,6 +107,7 @@ function displayCharts() {
 	  title: "Hashrate Dominance",
 	  levelColors:["#e8e84c", "#6cdb5e"],
 	  pointer: true,
+      decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
 	    bottomlength: 10,
