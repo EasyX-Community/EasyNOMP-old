@@ -49,9 +49,12 @@ function displayCharts() {
 	  gaugeWidthScale: 0.6,
 	  levelColors:["#e8e84c", "#6cdb5e"]
 	});
+
+	var tmpInt = Math.min(100 - (Math.floor(10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100), 100);	
+	
 	invalidGage = new JustGage({
 	  id: "validShare",
-	  value: 0, // Math.min(stats.invalidShares, 100),
+	  value: tmpInt,
 	  min: 0,
 	  max: 100,
 	  symbol: '%',
