@@ -51,7 +51,7 @@ function displayCharts() {
 	});
 	invalidGage = new JustGage({
 	  id: "validShare",
-	  value: Math.min(stats.invalidShares, 100),
+	  value: 0, // Math.min(stats.invalidShares, 100),
 	  min: 0,
 	  max: 100,
 	  symbol: '%',

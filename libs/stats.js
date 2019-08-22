@@ -376,42 +376,61 @@ module.exports = function(portalConfig, poolConfigs) {
         coinStats.workers = {};
         coinStats.shares = 0;
         coinStats.hashrates.forEach(function(ins) {
-          var parts = ins.split(':');
-          var workerShares = parseFloat(parts[0]);
-          var worker = parts[1];
-          var diff = Math.round(parts[0] * 8192);
-          if (workerShares > 0) {
-            coinStats.shares += workerShares;
-            if (worker in coinStats.workers) {
-              coinStats.workers[worker].shares += workerShares;
-              coinStats.workers[worker].diff = diff;
-            } else
-              coinStats.workers[worker] = {
-                shares: workerShares,
-                diff: diff,
-                invalidshares: 0,
-                currRoundShares: 0,
-                currRoundTime: 0,
-                hashrateString: null,
-                luckDays: null,
-                luckHours: null
-              };
-          } else {
-            if (worker in coinStats.workers) {
-              coinStats.workers[worker].invalidshares -= workerShares; // workerShares is negative number!
-              coinStats.workers[worker].diff = diff;
-            } else
-              coinStats.workers[worker] = {
-                shares: 0,
-                diff: diff,
-                currRoundShares: 0,
-                currRoundTime: 0,
-                invalidshares: -workerShares,
-                hashrateString: null,
-                luckDays: null,
-                luckHours: null
-              };
-          }
+        var parts = ins.split(':');
+        var workerShares = parseFloat(parts[0]);
+        var worker = parts[1];
+        var diff = Math.round(parts[0] * 8192);
+          
+                if (workerShares > 0) {
+                  
+                    coinStats.shares += workerShares;
+                    if (worker in coinStats.workers) {
+                        
+                        coinStats.workers[worker].shares += workerShares;
+                        coinStats.workers[worker].diff = diff;
+                        
+                    } 
+                    else {
+                    
+                        coinStats.workers[worker] = {
+                        shares: workerShares,
+                        diff: diff,
+                        invalidshares: 0,
+                        currRoundShares: 0,
+                        currRoundTime: 0,
+                        hashrateString: null,
+                        luckDays: null,
+                        luckHours: null
+                        };
+                        
+                    }
+                    
+                } 
+                else {
+                  
+                    if (worker in coinStats.workers) {
+                        
+                        coinStats.workers[worker].invalidshares -= workerShares; // workerShares is negative number!
+                        coinStats.workers[worker].diff = diff;
+                        
+                    } 
+                    else {
+                    
+                        coinStats.workers[worker] = {
+                        shares: 0,
+                        diff: diff,
+                        currRoundShares: 0,
+                        currRoundTime: 0,
+                        invalidshares: -workerShares,
+                        hashrateString: null,
+                        luckDays: null,
+                        luckHours: null
+                        };
+                      
+                    }
+                  
+                }
+                
         });
 
         var shareMultiplier = Math.pow(2, 32) / algos[coinStats.algorithm].multiplier;
