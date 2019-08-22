@@ -56,13 +56,14 @@ module.exports = function () {
     
     // LeshaCat code to decide wether to load example page or real news page.    
     var mainScriptPath = require('path').dirname(require.main.filename)    
-    if (fs.existsSync(mainScriptPath + '/website/pages/news.html')) {
+    if ((fs.existsSync(mainScriptPath + '/website/pages/news.html'))) {
         // Do something
         pageFiles['news.html'] = "news";                // news page
         logger.debug("Loaded CUSTOM news.html"); 
     }
     else {
         pageFiles['news_example.html'] = "news";        // news page
+        
         logger.debug("Loaded EXAMPLE news_example.html");
     }    
     
