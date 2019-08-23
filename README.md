@@ -35,10 +35,8 @@
 ### Helping give NOMP & BootNOMP new life, with some style!
 ***LeshaCat:*** _"[EasyX-Community/EasyNOMP](https://github.com/EasyX-Community/EasyNOMP) is built for the [EasyX Community](http://www.easyx.info/) & [Pool](http://easyxpool.tk/). EasyNOMP is based off of [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP). It's focus is to add patches, bug fixes, features, and quality documentation to BootNOMP to make it easy to install. BootNOMP gives NOMP a sleek looking new design, and fully re-designed and re-coded user interface! I saw the original dev working on BootNOMP and the source code and figured I could lend a hand. I have plans to rework the documentation, Block Explorer, Docker source, and some various configuration options. I decided a hard fork would be best suited. If you would like to contribute, please consider looking at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) and original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first, as these two guys are the only ones who are helping get the NOMP rebirthing process started."_
 
-***NOTE:*** If you want to help contribute, please look at the original project [foxer666/node-open-mining-portal](https://github.com/foxer666/node-open-mining-portal) first!<br />
-***NOTE:*** If you want to help contribute, please look at the parent project [1301313Y/BootNOMP](https://github.com/1301313Y/BootNOMP) first!<br />
-
-***NOTE:*** _You can fork this repository by clicking "fork" in the top right._
+***NOTE:*** _Want to help out? You can fork this repository by clicking "fork" in the top right._<br />
+***NOTE:*** _If you submit pull requests and they are accepted, your GitHub account will be credited for the work._
 
 -------
 ### Node Open Mining Portal consists of 3 main modules:
@@ -49,7 +47,7 @@
 | [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) | https://github.com/EasyX-Community/node-multi-hashing |
 
 ***NOTE:*** _Stratum Pool can be replaced with [node-merged-pool](https://github.com/UNOMP/node-merged-pool) - https://github.com/UNOMP/node-merged-pool._<br />
-***NOTE:*** _Add new algorithms using [Node Multihashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
+***NOTE:*** _Node Multihashing can be replaced with [node-multi-hashing](https://github.com/EasyX-Community/node-multi-hashing) - https://github.com/EasyX-Community/node-multi-hashing._
 
 -------
 ### Requirements
