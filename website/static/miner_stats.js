@@ -36,6 +36,7 @@ function displayCharts() {
 	  max: 100,
 	  symbol: '%',
 	  pointer: true,
+      counter: true,
       decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
@@ -51,8 +52,8 @@ function displayCharts() {
 	  levelColors:["#e8e84c", "#6cdb5e"]
 	});
 
-	var tmpInt = Math.min((((10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100)), 100);	
-	var tmpInt2 = (100 - tmpInt);	
+	var tmpInt = Math.min((((10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100)), 100);
+	var tmpInt2 = (100 - tmpInt) || 0;	
 	
 	invalidGage = new JustGage({
 	  id: "validShare",
@@ -61,6 +62,7 @@ function displayCharts() {
 	  max: 100,
 	  symbol: '%',
 	  pointer: true,
+      counter: true,
       decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
@@ -82,6 +84,7 @@ function displayCharts() {
 	  max: 100,
 		symbol: '%',
 	  pointer: true,
+      counter: true,
       decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
@@ -107,6 +110,7 @@ function displayCharts() {
 	  title: "Hashrate Dominance",
 	  levelColors:["#e8e84c", "#6cdb5e"],
 	  pointer: true,
+      counter: true,
       decimals: 2,
 	  pointerOptions: {
 	    toplength: -15,
