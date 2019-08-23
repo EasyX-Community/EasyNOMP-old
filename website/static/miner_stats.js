@@ -167,9 +167,11 @@ function updateStats() {
 	// update miner stats
 	$("#statsHashrate").text(getReadableHashRateString(totalHash));
 	$("#statsHashrateAvg").text(getReadableHashRateString(calculateAverageHashrate(null)));
-	$("#statsTotalImmature").text(totalImmature);
+	
+/*	$("#statsTotalImmature").text(totalImmature);
 	$("#statsTotalBal").text(totalBal);
-	$("#statsTotalPaid").text(totalPaid);
+	$("#statsTotalPaid").text(totalPaid);*/
+	
 }
 
 function updateWorkerStats() {
@@ -183,6 +185,11 @@ function updateWorkerStats() {
 		console.log(stats.miners[w]);
 		$("#statsHashrate" + htmlSafeWorkerName).text(getReadableHashRateString(stats.miners[w].hashrate[stats.miners[w].hashrate.length - 1] || 0));
 		$("#statsHashrateAvg" + htmlSafeWorkerName).text(getReadableHashRateString(calculateAverageHashrate(saneWorkerName)));
+		
+/*    	$("#statsTotalImmature").text(totalImmature);
+    	$("#statsTotalBal").text(totalBal);
+    	$("#statsTotalPaid").text(totalPaid);*/
+	
 	}
 }
 
@@ -193,7 +200,9 @@ function addWorkerToDisplay(name, htmlSafeName, workerObj) {
 	htmlToAdd += '<div><i class="fas fa-tachometer-alt"></i> <span id="statsHashrate' + htmlSafeName + '">' + getReadableHashRateString(workerObj.hashrate[workerObj.hashrate.length - 1][1] || 0) + '</span> (Now)</div>';
 	htmlToAdd += '<div><i class="fas fa-tachometer-alt"></i> <span id="statsHashrateAvg' + htmlSafeName + '">' + getReadableHashRateString(calculateAverageHashrate(name)) + '</span> (Avg)</div>';
 	htmlToAdd += '</div></div></div>';
+	
 	$("#boxesWorkers").html($("#boxesWorkers").html() + htmlToAdd);
+	
 }
 
 function calculateAverageHashrate(worker) {
@@ -243,8 +252,16 @@ $.getJSON('/api/worker_stats?' + _miner, function(data) {
 			displayCharts();
 			rebuildWorkerDisplay();
 			updateStats();
+			
+        	var totalPaid = stats.paid || 0;
+        	var totalBal = stats.balance || 0;
+        	var totalImmature = stats.immature || 0;
+        	var SYMB = stats.symbol || "UNKNOWN SYMBOL";
 
-			$('#total-paid-label').append(stats.paid.toFixed(8) + ' ' + stats.symbol);
+			$('#total-paid-label').append(totalPaid.toFixed(8) + ' ' + SYMB);			
+			$('#total-immature-label').append(totalImmature.toFixed(8) + ' ' + SYMB);
+			$('#total-balance-label').append(totalBal.toFixed(8) + ' ' + SYMB);
+			
 		});
 	});
 });
