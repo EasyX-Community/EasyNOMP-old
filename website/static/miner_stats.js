@@ -49,7 +49,8 @@ function displayCharts() {
 	  },
 	  title: "Shares This Round",
 	  gaugeWidthScale: 0.6,
-	  levelColors:["#e8e84c", "#6cdb5e"]
+	  levelColors:["#e8e84c", "#6cdb5e"],
+      levelColorsGradient: true
 	});
 
 	var tmpInt = Math.min((((10000 * stats.shares / (stats.shares + stats.invalidShares)) / 100)), 100);
@@ -75,7 +76,8 @@ function displayCharts() {
 	  },
 	  title: "Invalid Shares",
 	  gaugeWidthScale: 0.6,
-	  levelColors:["#f9a42c", "#f21f10"]
+	  levelColors:["#f9a42c", "#f21f10"],
+      levelColorsGradient: true
 	});
 	workerGage= new JustGage({
 	  id: "workerDominance",
@@ -97,7 +99,8 @@ function displayCharts() {
 	  },
 	  title: "Worker Dominance",
 	  gaugeWidthScale: 0.6,
-	  levelColors:["#e8e84c", "#6cdb5e"]
+	  levelColors:["#e8e84c", "#6cdb5e"],
+      levelColorsGradient: true
 	});
 	var high = 0;
 	console.log(stats.hashrate);
@@ -109,6 +112,7 @@ function displayCharts() {
 	  symbol: '%',
 	  title: "Hashrate Dominance",
 	  levelColors:["#e8e84c", "#6cdb5e"],
+      levelColorsGradient: true,
 	  pointer: true,
       counter: true,
       decimals: 2,
@@ -162,12 +166,12 @@ function displayCharts() {
 }
 
 function updateStats() {
+    
 	var stats = getWorkerStats(_miner);
+	
 	totalHash = stats.hashrate;
-	totalPaid = stats.paid;
-	totalBal = stats.balance;
-	totalImmature = stats.immature;
 	totalShares = stats.totalShares;
+	
 	// update miner stats
 	$("#statsHashrate").text(getReadableHashRateString(totalHash));
 	$("#statsHashrateAvg").text(getReadableHashRateString(calculateAverageHashrate(null)));
@@ -260,11 +264,16 @@ $.getJSON('/api/worker_stats?' + _miner, function(data) {
         	var totalPaid = stats.paid || 0;
         	var totalBal = stats.balance || 0;
         	var totalImmature = stats.immature || 0;
-        	var SYMB = stats.symbol || "UNKNOWN SYMBOL";
+        	
+        	var luckDays = stats.luckDays || "unknown";
+        	/*alert('LD: ' + luckDays)*/
+	
+        	var SYMB = stats.symbol || "unknown symbol";
 
 			$('#total-paid-label').append(totalPaid.toFixed(8) + ' ' + SYMB);			
 			$('#total-immature-label').append(totalImmature.toFixed(8) + ' ' + SYMB);
 			$('#total-balance-label').append(totalBal.toFixed(8) + ' ' + SYMB);
+			$('#total-luckdays-label').append(luckDays);
 			
 		});
 	});
