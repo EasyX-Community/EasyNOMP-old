@@ -6,8 +6,8 @@ const http = require('http');
 const https = require('https');
 
 var async = require('async');
-var watch = require('node-watch');
 var redis = require('redis');
+var watch = require('node-watch');
 
 var dot = require('dot');
 var express = require('express');
@@ -21,6 +21,12 @@ var api = require('./api.js');
 
 const loggerFactory = require('./logger.js');
 const logger = loggerFactory.getLogger('Website', 'system');
+
+
+/* LeshaCat code to add LZ/Matomo support :D */
+if (fs.existsSync('lzCode.conf')) { var lzCode = fs.readFileSync('lzCode.conf','utf8'); } else { var lzCode = ""; }
+if (fs.existsSync('matomoCode.conf')) { var matomoCode = fs.readFileSync('matomoCode.conf','utf8'); } else { var matomoCode = ""; }
+
 
 module.exports = function () {
     logger.info("Starting Website module");
@@ -83,18 +89,23 @@ module.exports = function () {
             pageProcessed[pageName] = pageTemplates[pageName]({
                 poolsConfigs: poolConfigs,
                 stats: portalStats.stats,
-                portalConfig: portalConfig
+                portalConfig: portalConfig,
+                matomoCode: matomoCode,             ///* LeshaCat code to add LZ/Matomo support :D */
+                livezillaCode: lzCode               ///* LeshaCat code to add LZ/Matomo support :D */
             });
             indexesProcessed[pageName] = pageTemplates.index({
                 page: pageProcessed[pageName],
                 selected: pageName,
                 stats: portalStats.stats,
                 poolConfigs: poolConfigs,
-                portalConfig: portalConfig
+                portalConfig: portalConfig,
+                matomoCode: matomoCode,             ///* LeshaCat code to add LZ/Matomo support :D */
+                livezillaCode: lzCode               ///* LeshaCat code to add LZ/Matomo support :D */
             });
         }
 
-        //logger.debug(logSystem, 'Stats', 'Website updated to latest stats');
+        logger.debug('Website updated to latest stats');
+        
     };
 
 

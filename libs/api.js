@@ -92,10 +92,8 @@ module.exports = function(portalConfig, poolConfigs) {
                           }
                         }
                         workers[w].balance = (workers[w].balance || 0);
-                        
                         workers[w].paid = (workers[w].paid || 0);
-                        workers[w].immature = (workers[w].immature || 0);
-                        
+                                                
                         totalHash += portalStats.stats.pools[pool].workers[w].hashrate;
                         networkSols = portalStats.stats.pools[pool].poolStats.networkSols;
                       }

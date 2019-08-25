@@ -1,5 +1,8 @@
 *~
 *.bak
+*.rdb
+*.log
+
 .git/
 .idea/
 
@@ -19,9 +22,10 @@ ecosystem.config.js
 
 access-token
 config.json
+lzCode.conf
+matomoCode.conf
+
 pool_configs/*.json
-
-dump.rdb
-
 !pool_configs/*_example.json
+
 !.gitkeep
