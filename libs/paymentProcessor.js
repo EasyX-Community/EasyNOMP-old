@@ -20,7 +20,7 @@ module.exports = function() {
   let logger = loggerFactory.getLogger('PaymentProcessing', 'system');
 
   var poolConfigs = JSON.parse(process.env.pools);
-  logger.info("Payment processor worker started");
+  logger.info("PP> Payment processor worker started");
 
   var enabledPools = [];
 
@@ -29,18 +29,18 @@ module.exports = function() {
     if (poolOptions.paymentProcessing &&
       poolOptions.paymentProcessing.enabled) {
       enabledPools.push(coin);
-      logger.info("Enabled %s for payment processing", coin)
+      logger.info("PP> Enabled %s for payment processing", coin)
     }
   });
 
   async.filter(enabledPools, function(coin, callback) {
     SetupForPool(poolConfigs[coin], function(setupResults) {
-      logger.debug("Payment processor initialized. Setup results %s", setupResults);
+      logger.debug("PP> Payment processor initialized. Setup results %s", setupResults);
       callback(null, setupResults);
     });
   }, function(err, coins) {
     if (err) {
-      logger.error('Error processing enabled pools in the config') // TODO: ASYNC LIB was updated, need to report a better error
+      logger.error('PP>ERROR> Error processing enabled pools in the config') // TODO: ASYNC LIB was updated, need to report a better error
     } else {
       coins.forEach(function(coin) {
 
@@ -51,7 +51,7 @@ module.exports = function() {
 
 		if (portalConfig.devmode) {
 			
-			tmpInterval = 120;
+			tmpInterval = 9999999999999999999999;
 		
 		}
 		else {
@@ -60,7 +60,9 @@ module.exports = function() {
 		
 		}
 		
-        logger.info('Payment processing setup to run every %s second(s) with daemon (%s@%s:%s) and redis (%s:%s)',
+		processingConfig.paymentInterval = tmpInterval;
+		
+        logger.info('PP> Payment processing setup to run every %s second(s) with daemon (%s@%s:%s) and redis (%s:%s)',
         tmpInterval,
         processingConfig.daemon.user,
         processingConfig.daemon.host,
@@ -90,17 +92,17 @@ function SetupForPool(poolOptions, setupFinished) {
   const coinPrecision = 8;
   var paymentInterval;
 
-  logger.debug('Validating address and balance');
+  logger.debug('PP> Validating address and balance');
 
   async.parallel([
     function(callback) {
       daemon.cmd('validateaddress', [poolOptions.address], function(result) {
-        logger.silly('Validated %s address with result %s', poolOptions.address, JSON.stringify(result));
+        logger.silly('PP> Validated %s address with result %s', poolOptions.address, JSON.stringify(result));
         if (result.error) {
-          logger.error('Error with payment processing daemon %s', JSON.stringify(result.error));
+          logger.error('PP>ERROR> Error with payment processing daemon %s', JSON.stringify(result.error));
           callback(true);
         } else if (!result.response || !result.response.ismine) {
-          logger.error('Daemon does not own pool address - payment processing can not be done with this daemon, %s', JSON.stringify(result.response));
+          logger.error('PP>ERROR> Daemon does not own pool address - payment processing can not be done with this daemon, %s', JSON.stringify(result.response));
           callback(true);
         } else {
           callback()
@@ -115,25 +117,28 @@ function SetupForPool(poolOptions, setupFinished) {
           return;
         }
         try {
+            
+            var minimumPayment = new BigNumber(0);
         	
-//			if (portalConfig.devmode) {
+			if (portalConfig.devmode) {
 				
-            	let minimumPayment = new BigNumber(0.5);
+            	minimumPayment = new BigNumber(0.25);
             	
-/*            }
+            }
             else {
             
-                let minimumPayment = new BigNumber(0);
-            	//let minimumPayment = new BigNumber(processingConfig.minimumPayment);
+            	minimumPayment = new BigNumber(processingConfig.minimumPayment);
             
-            }*/
+            }
           
-            logger.silly('minimumPayment = %s', minimumPayment.toString(10));
             minPayment = minimumPayment;
+            processingConfig.minimumPayment = minimumPayment;
+            
+            logger.debug('PP> minimumPayment = %s', minimumPayment.toString(10));
           
         } catch (e) {
           console.log(e);
-          logger.error('Error detecting number of satoshis in a coin, cannot do payment processing. Tried parsing: %s', JSON.stringify(result.data));
+          logger.error('PP>ERROR> Error detecting number of satoshis in a coin, cannot do payment processing. Tried parsing: %s', JSON.stringify(result.data));
           wasICaught = true;
         } finally {
           if (wasICaught) {
@@ -147,19 +152,20 @@ function SetupForPool(poolOptions, setupFinished) {
     }
   ], function(err) {
     if (err) {
-      logger.error("There was error during payment processor setup %s", JSON.stringify(err));
+      logger.error("PP>ERROR> There was error during payment processor setup %s", JSON.stringify(err));
       setupFinished(false);
       return;
     }
     paymentInterval = setInterval(function() {
       try {
         processPayments();
-        logger.info("Set up to process payments every %s seconds", processingConfig.paymentInterval);
+        logger.info("PP> Set up to process payments every %s seconds", processingConfig.paymentInterval);
       } catch (e) {
-        logger.error("There was error during payment processor setup %s", JSON.stringify(e));
+        logger.error("PP>ERROR> There was error during payment processor setup %s", JSON.stringify(e));
         throw e;
       }
     }, processingConfig.paymentInterval * 1000);
+    
     setTimeout(processPayments, 100);
     setupFinished(true);
   });
@@ -169,7 +175,7 @@ function SetupForPool(poolOptions, setupFinished) {
     daemon.cmd('getmininginfo', params,
       function(result) {
         if (!result || result.error || result[0].error || !result[0].response) {
-          logger.error('Error with RPC call getmininginfo ' + JSON.stringify(result[0].error));
+          logger.error('PP>ERROR> Error with RPC call getmininginfo ' + JSON.stringify(result[0].error));
           return;
         }
 
@@ -189,7 +195,7 @@ function SetupForPool(poolOptions, setupFinished) {
         daemon.cmd('getnetworkinfo', params,
           function(result) {
             if (!result || result.error || result[0].error || !result[0].response) {
-              logger.error('Error with RPC call getnetworkinfo ' + JSON.stringify(result[0].error));
+              logger.error('PP>ERROR> Error with RPC call getnetworkinfo ' + JSON.stringify(result[0].error));
               return;
             }
 
@@ -211,7 +217,7 @@ function SetupForPool(poolOptions, setupFinished) {
 
             redisClient.multi(finalRedisCommands).exec(function(error, results) {
               if (error) {
-                logger.error('Error with redis during call to cacheNetworkStats() ' + JSON.stringify(error));
+                logger.error('PP>ERROR> Error with redis during call to cacheNetworkStats() ' + JSON.stringify(error));
                 return;
               }
             });
@@ -315,7 +321,7 @@ function SetupForPool(poolOptions, setupFinished) {
                 daemon.batchCmd(rpcDupCheck, function(error, blocks){
                     endRPCTimer();
                     if (error || !blocks) {
-                        logger.error('ATTN> Error with duplicate block check rpc call getblock %s', JSON.stringify(error));
+                        logger.error('PP>ATTN> Error with duplicate block check rpc call getblock %s', JSON.stringify(error));
                         return;
                     }
                     // look for the invalid duplicate block
@@ -325,20 +331,20 @@ function SetupForPool(poolOptions, setupFinished) {
                         if (block && block.result) {
                             // invalid duplicate submit blocks have negative confirmations
                             if (block.result.confirmations < 0) {
-                                logger.debug('ATTN> Remove invalid duplicate block %s > %s', block.result.height, block.result.hash);
+                                logger.debug('PP>ATTN> Remove invalid duplicate block %s > %s', block.result.height, block.result.hash);
                                 // move from blocksPending to blocksDuplicate...
                                 invalidBlocks.push(['smove', coin + ':blocksPending', coin + ':blocksDuplicate', dups[i].serialized]);
                             } else {
                                 // block must be valid, make sure it is unique
                                 if (validBlocks.hasOwnProperty(dups[i].blockHash)) {
                                     // not unique duplicate block
-                                    logger.debug('ATTN> Remove non-unique duplicate block %s > %s', block.result.height, block.result.hash);
+                                    logger.debug('PP>ATTN> Remove non-unique duplicate block %s > %s', block.result.height, block.result.hash);
                                     // move from blocksPending to blocksDuplicate...
                                     invalidBlocks.push(['smove', coin + ':blocksPending', coin + ':blocksDuplicate', dups[i].serialized]);
                                 } else {
                                     // keep unique valid block
                                     validBlocks[dups[i].blockHash] = dups[i].serialized;
-                                    logger.debug('ATTN> Keep valid duplicate block %s > %s', block.result.height, block.result.hash);
+                                    logger.debug('PP>ATTN> Keep valid duplicate block %s > %s', block.result.height, block.result.hash);
                                 }
                             }
                         }
@@ -352,12 +358,12 @@ function SetupForPool(poolOptions, setupFinished) {
                         redisClient.multi(invalidBlocks).exec(function(error, kicked){
                             endRedisTimer();
                             if (error) {
-                                logger.error('ATTN> Error could not move invalid duplicate blocks in redis %s', JSON.stringify(error));
+                                logger.error('PP>ATTN> Error could not move invalid duplicate blocks in redis %s', JSON.stringify(error));
                             }
                         });
                     } else {
                         // notify pool owner that we are unable to find the invalid duplicate blocks, manual intervention required...
-                        logger.error('ATTN> Unable to detect invalid duplicate blocks, duplicate block payments on hold.');
+                        logger.error('PP>ATTN> Unable to detect invalid duplicate blocks, duplicate block payments on hold.');
                     }
                 });
             }
@@ -598,41 +604,41 @@ function SetupForPool(poolOptions, setupFinished) {
                   
                 }
               } else {
-                logger.debug('WARN>Look around! We have anonymous shares, null worker');
+                logger.debug('PP>WARN> Look around! We have anonymous shares, null worker');
               }
             });
             return resultForRound;
           });
 
-          logger.debug('Merged workers into payout addresses');
-          logger.silly('allWorkerShares after merging %s', JSON.stringify(allWorkerShares));
+          logger.debug('PP> Merged workers into payout addresses');
+          logger.silly('PP> allWorkerShares after merging %s', JSON.stringify(allWorkerShares));
 
 
           rounds.forEach(function(round, i) {
-            logger.silly('iterating round #%s from allWorkerShares', i);
-            logger.silly('round = %s', JSON.stringify(round));
+            logger.silly('PP> iterating round #%s from allWorkerShares', i);
+            logger.silly('PP> round = %s', JSON.stringify(round));
 
             var workerSharesForRound = allWorkerShares[i];
-            logger.silly('workerSharesForRound = %s', JSON.stringify(workerSharesForRound));
+            logger.silly('PP> workerSharesForRound = %s', JSON.stringify(workerSharesForRound));
             if (!workerSharesForRound) {
-              logger.error('No worker shares for round: %s, blockHash %s', round.height, round.blockHash);
+              logger.error('PP> No worker shares for round: %s, blockHash %s', round.height, round.blockHash);
               return;
             }
 
             switch (round.category) {
               case 'kicked':
               case 'orphan':
-                logger.warn("Round with height %s and tx %s is orphan", round.height, round.txHash);
+                logger.warn("PP> Round with height %s and tx %s is orphan", round.height, round.txHash);
                 round.workerShares = workerSharesForRound;
                 break;
 
               case 'generate':
                 /* We found a confirmed block! Now get the reward for it and calculate how much
                    we owe each miner based on the shares they submitted during that block round. */
-                logger.info("We have found confirmed block #%s ready for payout", round.height);
-                logger.silly("round.reward = %s", round.reward);
+                logger.info("PP> We have found confirmed block #%s ready for payout", round.height);
+                logger.silly("PP> round.reward = %s", round.reward);
                 var reward = new BigNumber(round.reward);
-                logger.silly("reward = %s", reward.toString(10));
+                logger.silly("PP> reward = %s", reward.toString(10));
 
                 var totalShares = Object.keys(workerSharesForRound).reduce(function(p, c) {
                   if (p === 0) {
@@ -640,20 +646,20 @@ function SetupForPool(poolOptions, setupFinished) {
                   }
                   return p.plus(workerSharesForRound[c])
                 }, 0);
-                logger.silly('totalShares = %s', totalShares.toString(10));
+                logger.silly('PP> totalShares = %s', totalShares.toString(10));
 
                 Object.keys(workerSharesForRound).forEach((workerAddress) => {
-                  logger.debug("Calculating reward for workerAddress %s", workerAddress);
+                  logger.debug("PP> Calculating reward for workerAddress %s", workerAddress);
                   let percent = workerSharesForRound[workerAddress].dividedBy(totalShares);
-                  logger.silly("percent = %s", percent.toString(10));
+                  logger.silly("PP> percent = %s", percent.toString(10));
                   let workerRewardTotal = reward.multipliedBy(percent);
-                  logger.silly("workerRewardTotal = %s", workerRewardTotal.toString(10));
+                  logger.silly("PP> workerRewardTotal = %s", workerRewardTotal.toString(10));
                   let worker = workers[workerAddress] = (workers[workerAddress] || {});
-                  logger.silly("worker = %s", JSON.stringify(worker));
+                  logger.silly("PP> worker = %s", JSON.stringify(worker));
                   worker.reward = (worker.reward || new BigNumber(0)).plus(workerRewardTotal);
                   worker.roundShares = workerSharesForRound[workerAddress] || new BigNumber(0);
                   worker.totalShares = (worker.totalShares || new BigNumber(0)).plus(worker.roundShares);
-                  logger.silly('worker.reward = %s', worker.reward.toString(10));
+                  logger.silly('PP> worker.reward = %s', worker.reward.toString(10));
                 });
 
                 break;
@@ -672,46 +678,46 @@ function SetupForPool(poolOptions, setupFinished) {
        if not sending the balance, the differnce should be +(the amount they earned this round)
        */
       function(workers, rounds, addressAccount, callback) {
-        logger.debug("Almost ready to send funds, calculating against existing balances");
+        logger.debug("PP> Almost ready to send funds, calculating against existing balances");
         var trySend = function(withholdPercent) {
-          logger.debug('Trying to send');
-          logger.silly('withholdPercent = %s', withholdPercent.toString(10));
+          logger.debug('PP> Trying to send');
+          logger.silly('PP> withholdPercent = %s', withholdPercent.toString(10));
           var addressAmounts = {};
           var totalSent = new BigNumber(0);
           var totalShares = new BigNumber(0);
           var shareAmounts = {};
           var balanceAmounts = {};
-          logger.silly('totalSent = %s', totalSent);
+          logger.silly('PP> totalSent = %s', totalSent);
           for (var w in workers) {
-            logger.silly('w = %s', w);
+            logger.silly('PP> w = %s', w);
             var worker = workers[w];
-            logger.silly('worker = %s', JSON.stringify(worker));
+            logger.silly('PP> worker = %s', JSON.stringify(worker));
             totalShares = totalShares.plus(worker.totalShares || new BigNumber(0));
-            logger.silly('worker.totalShares = %s', (worker.totalShares || new BigNumber(0)).toString(10));
+            logger.silly('PP> worker.totalShares = %s', (worker.totalShares || new BigNumber(0)).toString(10));
             worker.balance = worker.balance || new BigNumber(0);
-            logger.silly('worker.balance = %s', worker.balance.toString(10));
+            logger.silly('PP> worker.balance = %s', worker.balance.toString(10));
             worker.reward = worker.reward || new BigNumber(0);
-            logger.silly('worker.reward = %s', worker.reward.toString(10));
+            logger.silly('PP> worker.reward = %s', worker.reward.toString(10));
             var toSend = (worker.balance.plus(worker.reward)).multipliedBy(new BigNumber(1).minus(withholdPercent));
-            logger.silly('toSend = %s', toSend.toString(10));
+            logger.silly('PP> toSend = %s', toSend.toString(10));
             if (toSend.isGreaterThanOrEqualTo(minPayment)) {
-              logger.info('Worker %s have reached minimum payout threshold (%s above minimum %s)', w, toSend.toString(10), minPayment.toString(10));
+              logger.info('PP> Worker %s have reached minimum payout threshold (%s above minimum %s)', w, toSend.toString(10), minPayment.toString(10));
               totalSent = totalSent.plus(toSend);
-              logger.silly('totalSent = %s', totalSent.toString(10));
+              logger.silly('PP> totalSent = %s', totalSent.toString(10));
               
               var address = worker.address = (worker.address || getProperAddress(w));
               
-              logger.silly('address = %s', address);
+              logger.silly('PP> address = %s', address);
               worker.sent = addressAmounts[address] = toSend;
-              logger.silly('worker.sent = %s', worker.sent.toString(10));
+              logger.silly('PP> worker.sent = %s', worker.sent.toString(10));
               worker.balanceChange = BigNumber.min(worker.balance, worker.sent).multipliedBy(new BigNumber(-1));
-              logger.silly('worker.balanceChange = %s', worker.balanceChange.toString(10));
+              logger.silly('PP> worker.balanceChange = %s', worker.balanceChange.toString(10));
             } else {
-              logger.debug('Worker %s have not reached minimum payout threshold %s', w, minPayment.toString(10));
+              logger.debug('PP> Worker %s have not reached minimum payout threshold %s', w, minPayment.toString(10));
               worker.balanceChange = BigNumber.max(toSend.minus(worker.balance), new BigNumber(0));
-              logger.silly('worker.balanceChange = %s', worker.balanceChange.toString(10));
+              logger.silly('PP> worker.balanceChange = %s', worker.balanceChange.toString(10));
               worker.sent = new BigNumber(0);
-              logger.silly('worker.sent = %s', worker.sent.toString(10));
+              logger.silly('PP> worker.sent = %s', worker.sent.toString(10));
               // track balance changes
               if (worker.balanceChange > 0) {
                 if (balanceAmounts[address] != null && balanceAmounts[address].isGreaterThan(0)) {
@@ -732,12 +738,12 @@ function SetupForPool(poolOptions, setupFinished) {
           }
 
           if (Object.keys(addressAmounts).length === 0) {
-            logger.info('No workers was chosen for paying out');
+            logger.info('PP> No workers was chosen for paying out');
             callback(null, workers, rounds, []);
             return;
           }
 
-          logger.info('Payments to miners: %s', JSON.stringify(addressAmounts));
+          logger.info('PP> Payments to miners: %s', JSON.stringify(addressAmounts));
 
     	  var feeAddresses = [];
     
@@ -769,8 +775,8 @@ function SetupForPool(poolOptions, setupFinished) {
           });*/
           
 
-          logger.info('Ok, going to pay from "%s" address with final amounts: %s', addressAccount, JSON.stringify(addressAmounts));
-          logger.info('Ok, going to pay FEES from "%s" addresses: %s', feeAddresses, JSON.stringify(feeAddresses));
+          logger.info('PP> Ok, going to pay from "%s" address with final amounts: %s', addressAccount, JSON.stringify(addressAmounts));
+          logger.info('PP> Ok, going to pay FEES from "%s" addresses: %s', feeAddresses, JSON.stringify(feeAddresses));
 
 
 
@@ -782,11 +788,11 @@ function SetupForPool(poolOptions, setupFinished) {
             //Check if payments failed because wallet doesn't have enough coins to pay for tx fees
             if (result.error && result.error.code === -6) {
               var higherPercent = withholdPercent.plus(new BigNumber(0.01));
-              logger.warn('Not enough funds to cover the tx fees for sending out payments, decreasing rewards by %s% and retrying');
+              logger.warn('PP> Not enough funds to cover the tx fees for sending out payments, decreasing rewards by %s% and retrying');
               trySend(higherPercent);
             } else if (result.error) {
-              logger.error('Error trying to send payments with RPC sendmany %s', JSON.stringify(result.error));
-              callback('Error trying to send payments with RPC sendmany %s', JSON.stringify(result.error));
+              logger.error('PP> Error trying to send payments with RPC sendmany %s', JSON.stringify(result.error));
+              callback('PP> Error trying to send payments with RPC sendmany %s', JSON.stringify(result.error));
             } else {
               // make sure sendmany gives us back a txid
               var txid = null;
@@ -794,12 +800,12 @@ function SetupForPool(poolOptions, setupFinished) {
                 txid = result.response;
               }
               if (!txid || txid == null) {
-                logger.warn('We didn\'t get a txid from \'sendmany\'... This could be a problem! Tried parsing: %s', JSON.stringify(result));
+                logger.warn('PP> We didn\'t get a txid from \'sendmany\'... This could be a problem! Tried parsing: %s', JSON.stringify(result));
               }
-              logger.debug('Sent out a total of ' + (totalSent) +
+              logger.debug('PP> Sent out a total of ' + (totalSent) +
                 ' to ' + Object.keys(addressAmounts).length + ' workers');
               if (withholdPercent.isGreaterThan(new BigNumber(0))) {
-                logger.warn('Had to withhold ' + (withholdPercent * new BigNumber(100)).toString(10) +
+                logger.warn('PP> Had to withhold ' + (withholdPercent * new BigNumber(100)).toString(10) +
                   '% of reward from miners to cover transaction fees. ' +
                   'Fund pool wallet with coins to prevent this from happening');
               }
@@ -899,89 +905,89 @@ function SetupForPool(poolOptions, setupFinished) {
 
         var finalRedisCommands = [];
 
-        logger.silly("finalRedisCommands %s", finalRedisCommands);
+        logger.silly("PP> finalRedisCommands %s", finalRedisCommands);
         if (movePendingCommands.length > 0) {
-          logger.silly("movePendingCommands goes in redis");
-          logger.silly("movePendingCommands = %s", movePendingCommands);
+          logger.silly("PP> movePendingCommands goes in redis");
+          logger.silly("PP> movePendingCommands = %s", movePendingCommands);
           finalRedisCommands = finalRedisCommands.concat(movePendingCommands);
         }
         if (orphanMergeCommands.length > 0) {
-          logger.silly("orphanMergeCommands goes in redis");
-          logger.silly("orphanMergeCommands = %s", orphanMergeCommands);
+          logger.silly("PP> orphanMergeCommands goes in redis");
+          logger.silly("PP> orphanMergeCommands = %s", orphanMergeCommands);
           finalRedisCommands = finalRedisCommands.concat(orphanMergeCommands);
         }
 
         if (balanceUpdateCommands.length > 0) {
-          logger.silly("balanceUpdateCommands goes in redis");
-          logger.silly("balanceUpdateCommands = %s", balanceUpdateCommands);
+          logger.silly("PP> balanceUpdateCommands goes in redis");
+          logger.silly("PP> balanceUpdateCommands = %s", balanceUpdateCommands);
           finalRedisCommands = finalRedisCommands.concat(balanceUpdateCommands);
         }
         if (workerPayoutsCommand.length > 0) {
-          logger.silly("workerPayoutsCommand goes in redis");
-          logger.silly("workerPayoutsCommand = %s", workerPayoutsCommand);
+          logger.silly("PP> workerPayoutsCommand goes in redis");
+          logger.silly("PP> workerPayoutsCommand = %s", workerPayoutsCommand);
           finalRedisCommands = finalRedisCommands.concat(workerPayoutsCommand);
         }
 
         if (roundsToDelete.length > 0) {
-          logger.silly("roundsToDelete goes in redis");
-          logger.silly("roundsToDelete = %s", roundsToDelete);
+          logger.silly("PP> roundsToDelete goes in redis");
+          logger.silly("PP> roundsToDelete = %s", roundsToDelete);
           finalRedisCommands.push(['del'].concat(roundsToDelete));
         }
 
         if (paymentsUpdate.length > 0) {
-          logger.silly("paymentsUpdate goes in redis");
-          logger.silly("paymentsUpdate = %s", roundsToDelete);
+          logger.silly("PP> paymentsUpdate goes in redis");
+          logger.silly("PP> paymentsUpdate = %s", roundsToDelete);
           finalRedisCommands = finalRedisCommands.concat(paymentsUpdate);
         }
 
         if (confirmsUpdate.length > 0) {
-          logger.silly("confirmsUpdate goes in redis");
-          logger.silly("confirmsUpdate = %s", confirmsUpdate);
+          logger.silly("PP> confirmsUpdate goes in redis");
+          logger.silly("PP> confirmsUpdate = %s", confirmsUpdate);
           finalRedisCommands = finalRedisCommands.concat(confirmsUpdate);
         }
 
         if (confirmsToDelete.length > 0) {
-          logger.silly("confirmsToDelete goes in redis");
-          logger.silly("confirmsToDelete = %s", confirmsToDelete);
+          logger.silly("PP> confirmsToDelete goes in redis");
+          logger.silly("PP> confirmsToDelete = %s", confirmsToDelete);
           finalRedisCommands = finalRedisCommands.concat(confirmsToDelete);
         }
 
         if (!totalPaid.eq(new BigNumber(0))) {
-          logger.silly("totalPaid goes in redis");
-          logger.silly("totalPaid = %s", totalPaid);
+          logger.silly("PP> totalPaid goes in redis");
+          logger.silly("PP> totalPaid = %s", totalPaid);
           finalRedisCommands.push(['hincrbyfloat', coin + ':stats', 'totalPaid', totalPaid.toFixed(coinPrecision).toString()]);
         }
 
         if (finalRedisCommands.length === 0) {
-          logger.silly("Nothing to write to redis");
-          callback("Nothing to write to redis");
+          logger.silly("PP> Nothing to write to redis");
+          callback("PP> Nothing to write to redis");
           return;
         }
-        logger.silly("finalRedisCommands %s", finalRedisCommands);
+        logger.silly("PP> finalRedisCommands %s", finalRedisCommands);
 
         startRedisTimer();
         redisClient.multi(finalRedisCommands).exec(function(error, results) {
           endRedisTimer();
           if (error) {
             clearInterval(paymentInterval);
-            logger.error('Payments sent but could not update redis. Disabling payment processing to prevent possible double-payouts.' +
+            logger.error('PP> Payments sent but could not update redis. Disabling payment processing to prevent possible double-payouts.' +
               ' %s The redis commands in %s_finalRedisCommands.txt must be ran manually', JSON.stringify(error), coin);
             fs.writeFile(coin + '_finalRedisCommands_' + new Date().getTime() + '.txt`', JSON.stringify(finalRedisCommands), function(err) {
-              logger.error('Could not write finalRedisCommands.txt, you are fucked.');
+              logger.error('PP> Could not write finalRedisCommands.txt, you are fucked.');
             });
           }
-          logger.debug("Redis have sucessfully updated after payouts");
-          callback("Redis updated successfully after payouts");
+          logger.debug("PP> Redis have sucessfully updated after payouts");
+          callback("PP> Redis updated successfully after payouts");
         });
       }
 
     ], function(wfresult) {
 
-		logger.debug('WATERFALL RESULT: %s', wfresult);
+		logger.debug('PP> WATERFALL RESULT: %s', wfresult);
 
 		var paymentProcessTime = Date.now() - startPaymentProcess;
 		
-		logger.debug('FINISHED PAYMENT INTERVAL - time spent: %s ms total, %s ms redis, %s ms daemon RPC',
+		logger.debug('PP> FINISHED PAYMENT INTERVAL - time spent: %s ms total, %s ms redis, %s ms daemon RPC',
 	        paymentProcessTime,
 	        timeSpentRedis,
 	        timeSpentRPC);

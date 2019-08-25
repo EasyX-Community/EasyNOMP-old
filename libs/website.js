@@ -104,7 +104,7 @@ module.exports = function () {
             });
         }
 
-        logger.debug('Website updated to latest stats');
+//        logger.debug('WEBSITE> Updated to latest stats');
         
     };
 
@@ -119,7 +119,7 @@ module.exports = function () {
             });
         }, function(err){
             if (err){
-                console.log('error reading files for creating dot templates: '+ JSON.stringify(err));
+                console.log('WEBSITE> error reading files for creating dot templates: '+ JSON.stringify(err));
                 return;
             }
             processTemplates();
@@ -136,7 +136,7 @@ module.exports = function () {
 
         if (basename in pageFiles){
             readPageFiles([basename]);
-            logger.debug('Reloaded file %s', basename);
+            logger.debug('WEBSITE> Reloaded file %s', basename);
         }
     });
 
@@ -198,7 +198,7 @@ module.exports = function () {
                     var daemon = new Stratum.daemon.interface([coinInfo.daemon], logger);
                     daemon.cmd('dumpprivkey', [coinInfo.address], function (result) {
                         if (result[0].error) {
-                            logger.error('Could not dumpprivkey for %s , err = %s', c, JSON.stringify(result[0].error));
+                            logger.error('WEBSITE> Could not dumpprivkey for %s , err = %s', c, JSON.stringify(result[0].error));
                             cback();
                             return;
                         }
@@ -218,7 +218,7 @@ module.exports = function () {
                 if (Object.keys(coinsForRedis).length > 0) {
                     client.hmset('coinVersionBytes', coinsForRedis, function (err) {
                         if (err) {
-                            logger.error('Failed inserting coin byte version into redis, err = %s', JSON.stringify(err));
+                            logger.error('WEBSITE> Failed inserting coin byte version into redis, err = %s', JSON.stringify(err));
                         }
                         client.quit();
                     });
@@ -230,7 +230,7 @@ module.exports = function () {
             }
         ], function (err, coinBytes) {
             if (err) {
-                logger.error('Error, err = %s', err);
+                logger.error('WEBSITE> Error, err = %s', err);
                 return;
             }
             try {
@@ -238,7 +238,7 @@ module.exports = function () {
                 keyScriptProcessed = keyScriptTemplate({coins: coinBytes});
             }
             catch (e) {
-                logger.error('Failed to read key.html file');
+                logger.error('WEBSITE> Failed to read key.html file');
             }
         });
 
@@ -342,16 +342,16 @@ module.exports = function () {
     try {
     	
     	/* HTTP WEBSITE */
-    	logger.info('Attempting to start Website on %s:%s', portalConfig.website.host,portalConfig.website.port);
+    	logger.info('WEBSITE> Attempting to start Website on %s:%s', portalConfig.website.host,portalConfig.website.port);
     	        
         http.createServer(app).listen(portalConfig.website.port, portalConfig.website.host, function () {
-            logger.info('Website started on %s:%s', portalConfig.website.host,portalConfig.website.port);
+            logger.info('WEBSITE> Website started on %s:%s', portalConfig.website.host,portalConfig.website.port);
         });
         
     }
     catch (e) {
-        logger.error('e = %s', JSON.stringify(e));
-        logger.error('Could not start website on %s:%s - its either in use or you do not have permission', portalConfig.website.host,portalConfig.website.port);
+        logger.error('WEBSITE> e = %s', JSON.stringify(e));
+        logger.error('WEBSITE> Could not start website on %s:%s - its either in use or you do not have permission', portalConfig.website.host,portalConfig.website.port);
     }
     
     
@@ -360,7 +360,7 @@ module.exports = function () {
     	
     	try {
     		
-			logger.info('Attempting to start SSL Website on %s:%s', portalConfig.website.host,portalConfig.website.sslport);	
+			logger.info('WEBSITE> Attempting to start SSL Website on %s:%s', portalConfig.website.host,portalConfig.website.sslport);	
 			       
 			var privateKey = fs.readFileSync( portalConfig.website.sslkey );
 			var certificate = fs.readFileSync( portalConfig.website.sslcert );
@@ -368,13 +368,13 @@ module.exports = function () {
 			var credentials = {key: privateKey, cert: certificate};			
 			
 			https.createServer(credentials, app).listen(portalConfig.website.sslport, portalConfig.website.host, function () {
-	            logger.info('SSL Website started on %s:%s', portalConfig.website.host,portalConfig.website.sslport);
+	            logger.info('WEBSITE> SSL Website started on %s:%s', portalConfig.website.host,portalConfig.website.sslport);
 	        });
         	
         }
         catch (e) {        	
-	        logger.error('e = %s', JSON.stringify(e));
-	        logger.error('Could not start SSL website on %s:%s - its either in use or you do not have permission', portalConfig.website.host,portalConfig.website.sslport);
+	        logger.error('WEBSITE> e = %s', JSON.stringify(e));
+	        logger.error('WEBSITE> Could not start SSL website on %s:%s - its either in use or you do not have permission', portalConfig.website.host,portalConfig.website.sslport);
         }
         	
         	
