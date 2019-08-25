@@ -454,7 +454,7 @@
 			<div style="position:relative;float:middle;display:block;top:16px;">
 			{{ if (it.portalConfig.devmode) { }}
                         	<!--<span style="display:block;height: 15px;">-->
-                			<h4 style="margin:2px 0 0 0;color:red; border:1px red dashed; text-align: center; vertical-align:middle;">BUGS ARE ONLY TEMPORARY: POOL IS IN DEBUG MODE, PAYMENTS TEMP @ 120 SEC!</h4>
+                			<h4 style="margin:2px 0 0 0;color:red; border:1px red dashed; text-align: center; vertical-align:middle;">BUGS ARE ONLY TEMPORARY: POOL IS IN DEBUG MODE, PAYMENTS TEMP @  {{=it.portalConfig.devmodePayMinimum}} minimum / {{=it.portalConfig.devmodePayInterval}} SEC!</h4>
 					<!--<a href="http://miningpool.easyx.info/devmode.html" target="_blank">Wtf is this?</a>-->
 				<!--</span>-->
 	                {{ } }}

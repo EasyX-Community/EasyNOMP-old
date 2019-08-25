@@ -51,7 +51,7 @@ module.exports = function() {
 
 		if (portalConfig.devmode) {
 			
-			tmpInterval = 9999999999999999999999;
+			tmpInterval = portalConfig.devmodePayInterval;
 		
 		}
 		else {
@@ -122,7 +122,7 @@ function SetupForPool(poolOptions, setupFinished) {
         	
 			if (portalConfig.devmode) {
 				
-            	minimumPayment = new BigNumber(0.25);
+            	minimumPayment = new BigNumber(portalConfig.devmodePayMinimim);
             	
             }
             else {
