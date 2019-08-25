@@ -1,8 +1,10 @@
 {
     
     "poolname": "My Cool Pool",
-
+    
     "devmode": false,
+    "devmodePayMinimim": 0.25,
+    "devmodePayInterval": 99999999999999999999999,
     
     "logips": true,       
     "anonymizeips": true,
