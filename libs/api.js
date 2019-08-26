@@ -59,7 +59,9 @@ module.exports = function(portalConfig, poolConfigs) {
               portalStats.getBalanceByAddress(address, function(balances) {
                 // get current round share total
                 portalStats.getTotalSharesByAddress(address, function(shares) {
+                    
                   var totalHash = parseFloat(0.0);
+                  var totalHeld = parseFloat(0.0);
                   var totalShares = shares;
                   var networkSols = 0;
                   for (var h in portalStats.statHistory) {
@@ -83,34 +85,50 @@ module.exports = function(portalConfig, poolConfigs) {
                   }
                   for (var pool in portalStats.stats.pools) {
                     for (var w in portalStats.stats.pools[pool].workers) {
+                        
                       if (w.startsWith(address)) {
+                          
                         workers[w] = portalStats.stats.pools[pool].workers[w];
+                        
                         for (var b in balances.balances) {
                           if (w == balances.balances[b].worker) {
                             workers[w].paid = balances.balances[b].paid;
                             workers[w].balance = balances.balances[b].balance;
+                            workers[w].immature = balances.balances[b].immature;
                           }
                         }
                         workers[w].balance = (workers[w].balance || 0);
+                        workers[w].immature = (workers[w].immature || 0);
                         workers[w].paid = (workers[w].paid || 0);
-                                                
+                                 
+                        // LeshaCat code - add balances               
+                        //totalHeld += portalStats.stats.pools[pool].workers[w].balance;
+                        
                         totalHash += portalStats.stats.pools[pool].workers[w].hashrate;
                         networkSols = portalStats.stats.pools[pool].poolStats.networkSols;
+                        
                       }
+                      
                     }
+                    
                   }
                   res.end(JSON.stringify({
                     miner: address,
                     totalHash: totalHash,
                     totalShares: totalShares,
                     networkSols: networkSols,
+                    
                     immature: balances.totalImmature,
                     balance: balances.totalHeld,
                     paid: balances.totalPaid,
+                    
                     workers: workers,
                     history: history
                   }));
+                  
                 });
+                
+                
               });
             } else {
               res.end(JSON.stringify({
