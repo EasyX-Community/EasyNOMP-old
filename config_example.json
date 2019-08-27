@@ -147,20 +147,6 @@
         "useCryptsy": true,
         "useMintpal": true,
         "useBittrex": true
-    },
-    
-    "trackingcode" : [
-                        "<!--THIS IS LINE 1 OF CODE EXAMPLE-->",
-                        "<!--A LINE WITH \"QUOTES\" AS EXAMPLE-->",
-                        "<!--THIS IS LINE 3 OF CODE EXAMPLE-->",
-                        "<!--THIS IS LAST LINE OF CODE EXAMPLE-->"
-                     ],
-                        
-    "livezillacode":[
-                        "<!--THIS IS LINE 1 OF CODE EXAMPLE-->",
-                        "<!--A LINE WITH \"QUOTES\" AS EXAMPLE-->",
-                        "<!--THIS IS LINE 3 OF CODE EXAMPLE-->",
-                        "<!--THIS IS LAST LINE OF CODE EXAMPLE-->"
-                    ]
+    }
 
 }

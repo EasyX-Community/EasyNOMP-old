@@ -61,6 +61,7 @@ module.exports = function() {
 		}
 		
 		processingConfig.paymentInterval = tmpInterval;
+		poolOptions.paymentProcessing.paymentInterval = tmpInterval;
 		
         logger.info('PP> Payment processing setup to run every %s second(s) with daemon (%s@%s:%s) and redis (%s:%s)',
         tmpInterval,
@@ -81,6 +82,8 @@ function SetupForPool(poolOptions, setupFinished) {
 
 
   var processingConfig = poolOptions.paymentProcessing;
+  
+  var rrConfig = poolOptions.rewardRecipients;
 
 
   var daemon = new Stratum.daemon.interface([processingConfig.daemon], loggerFactory.getLogger('CoinDaemon', coin));
@@ -89,8 +92,15 @@ function SetupForPool(poolOptions, setupFinished) {
 
   var minPayment;
 
+  var magnitude;
+//  var minPaymentSatoshis;
+
   const coinPrecision = 8;
   var paymentInterval;
+  
+  
+  var maxBlocksPerPayment =  Math.max(processingConfig.maxBlocksPerPayment || 3, 1);
+  
 
   logger.debug('PP> Validating address and balance');
 
@@ -133,6 +143,7 @@ function SetupForPool(poolOptions, setupFinished) {
           
             minPayment = minimumPayment;
             processingConfig.minimumPayment = minimumPayment;
+            poolOptions.paymentProcessing.minimumPayment = minimumPayment;
             
             logger.debug('PP> minimumPayment = %s', minimumPayment.toString(10));
           
@@ -445,7 +456,7 @@ function SetupForPool(poolOptions, setupFinished) {
             }
 
             round.category = generationTx.category;
-            if (round.category === 'generate') {
+            if ((round.category === 'generate') || (round.category === 'immature')) {
               round.reward = generationTx.amount || generationTx.value;
             }
 
@@ -466,12 +477,25 @@ function SetupForPool(poolOptions, setupFinished) {
 
 
           //Filter out all rounds that are immature (not confirmed or orphaned yet)
+          // only pay max blocks at a time
+          var payingBlocks = 0;
           rounds = rounds.filter(function(r) {
             switch (r.category) {
               case 'orphan':
+              
               case 'kicked':
                 r.canDeleteShares = canDeleteShares(r);
+                
+              case 'immature':
+                return true;
+                
               case 'generate':
+                payingBlocks++;
+                // if over maxBlocksPerPayment...
+                // change category to immature to prevent payment
+                // and to keep track of confirmations/immature balances
+                if (payingBlocks > maxBlocksPerPayment)
+                    r.category = 'immature';
                 return true;
               default:
                 return false;
@@ -628,14 +652,98 @@ function SetupForPool(poolOptions, setupFinished) {
             switch (round.category) {
               case 'kicked':
               case 'orphan':
-                logger.warn("PP> Round with height %s and tx %s is orphan", round.height, round.txHash);
+                logger.warn("BLOCKS>ORPHAN> Round with height %s and tx %s is orphan", round.height, round.txHash);
                 round.workerShares = workerSharesForRound;
                 break;
+
+
+
+
+
+                /* calculate immature balances */
+                case 'immature':
+//                    var feeSatoshi = coinsToSatoshies(fee);
+
+                    var immature = round.reward;
+                    var totalShares = parseFloat(0);
+                    var sharesLost = parseFloat(0);
+
+                    // adjust block immature .. tx fees / pool fees
+//                    immature = immature * 0.25;
+
+                    // total up shares for round
+                    for (var workerAddress in workerSharesForRound){
+                        var worker = workers[workerAddress] = (workers[workerAddress] || {});
+                        var shares = parseFloat((workerSharesForRound[workerAddress] || 0));
+                        
+                        
+                        // if pplnt mode
+/*                        if (pplntEnabled === true && maxTime > 0) {
+                            var tshares = shares;
+                            var lost = parseFloat(0);
+                            var address = workerAddress.split('.')[0];
+                            if (workerTimes[address] != null && parseFloat(workerTimes[address]) > 0) {
+                                var timePeriod = roundTo(parseFloat(workerTimes[address] || 1) / maxTime , 2);
+                                if (timePeriod > 0 && timePeriod < pplntTimeQualify) {
+                                    var lost = shares - (shares * timePeriod);
+                                    sharesLost += lost;
+                                    shares = Math.max(shares - lost, 0);
+                                }
+                            }
+                        }*/
+                        
+                        worker.roundShares = shares;
+                        totalShares += shares;
+                    }
+
+                    console.log('--IMMATURE DEBUG--------------');
+//                    console.log('performPayment: '+performPayment);
+                    console.log('blockHeight: '+round.height);
+                    
+                    console.log('blockReward: '+immature);
+                    console.log('round.reward: '+round.reward);
+                    
+                    console.log('totalShares: '+totalShares);
+                    
+                    console.log('blockConfirmations: '+round.confirmations);
+
+                    // calculate rewards for round
+                    var totalAmount = 0;
+                    for (var workerAddress in workerSharesForRound){
+                        
+                        console.log('workerAddress: '+workerAddress);
+                        
+                        var worker = workers[workerAddress] = (workers[workerAddress] || {});
+                        var percent = parseFloat(worker.roundShares) / totalShares;
+                        
+                        console.log('percent: '+percent);
+                        
+                        // calculate workers immature for this round
+                        var workerImmatureTotal = Math.round(immature * percent);
+                        
+                        console.log('workerImmatureTotal: '+workerImmatureTotal);
+                        
+                        worker.immature = (worker.immature || 0) + workerImmatureTotal;   
+                                             
+                        totalAmount += worker.immature;
+                        
+                    }
+                    console.log('worker.immature: '+worker.immature);
+                    
+                    console.log('totalImmature: '+totalAmount);
+                    
+                    console.log('----------------------------');
+                    break;
+                    
+                    
+                    
+                    
+                    
 
               case 'generate':
                 /* We found a confirmed block! Now get the reward for it and calculate how much
                    we owe each miner based on the shares they submitted during that block round. */
-                logger.info("PP> We have found confirmed block #%s ready for payout", round.height);
+                logger.info("BLOCKS>CONFIRMED> We have found confirmed block #%s ready for payout", round.height);
                 logger.silly("PP> round.reward = %s", round.reward);
                 var reward = new BigNumber(round.reward);
                 logger.silly("PP> reward = %s", reward.toString(10));
@@ -747,12 +855,19 @@ function SetupForPool(poolOptions, setupFinished) {
 
     	  var feeAddresses = [];
     
+          console.log('----------------------------');      
+    
     	  var rewardAddresses = poolOptions.rewardRecipients;
+    	  
+    	  console.log("rewardAddresses: " + JSON.stringify(rewardAddresses));
 
-//	     rewardAddresses = rewardAddresses.substring(1, rewardAddresses.length());
-//	     rewardAddresses = rewardAddresses.substring(0, rewardAddresses.length() - 1);
-//	     rewardAddresses = "{" + rewardAddresses + "}";
+	      rewardAddresses = rewardAddresses.substring(1, rewardAddresses.length());
+	      rewardAddresses = rewardAddresses.substring(0, rewardAddresses.length() - 1);
+	      rewardAddresses = "{" + rewardAddresses + "}";
+    	  
+    	  console.log("rewardAddresses: " + JSON.stringify(rewardAddresses));
 
+          console.log('----------------------------');
 
           /* THIS IS PAYMENT AMOUNTS */
           Object.keys(addressAmounts).forEach((address) => {
@@ -761,9 +876,9 @@ function SetupForPool(poolOptions, setupFinished) {
 
 
           /* THIS WILL CHARGE PORTION OF TXFEES TO USER */
-//          Object.keys(addressAmounts).forEach((address) => {
-//              feeAddresses.push(address);// = new BigNumber(0.00000000);
-//          });
+          Object.keys(addressAmounts).forEach((address) => {
+              feeAddresses.push(address);// = new BigNumber(0.00000000);
+          });
 
 //          Object.keys(rewardAddresses).forEach((rewardaddy) => {
 //            addressAmounts[rewardaddy] = 0.00000000;
@@ -776,6 +891,7 @@ function SetupForPool(poolOptions, setupFinished) {
           
 
           logger.info('PP> Ok, going to pay from "%s" address with final amounts: %s', addressAccount, JSON.stringify(addressAmounts));
+          
           logger.info('PP> Ok, going to pay FEES from "%s" addresses: %s', feeAddresses, JSON.stringify(feeAddresses));
 
 
@@ -843,23 +959,33 @@ function SetupForPool(poolOptions, setupFinished) {
 
         var totalPaid = new BigNumber(0);
 
+        var immatureUpdateCommands = [];
         var balanceUpdateCommands = [];
         var workerPayoutsCommand = [];
 
         for (var w in workers) {
-          var worker = workers[w];
-          if (!worker.balanceChange.eq(new BigNumber(0))) {
-            balanceUpdateCommands.push([
-              'hincrbyfloat',
-              coin + ':balances',
-              w,
-              worker.balanceChange.toFixed(coinPrecision).toString(10)
-            ]);
-          }
-          if (worker.sent !== 0) {
-            workerPayoutsCommand.push(['hincrbyfloat', coin + ':payouts', w, worker.sent.toString(10)]);
-            totalPaid = totalPaid.plus(worker.sent);
-          }
+            
+              var worker = workers[w];
+              if (!worker.balanceChange.eq(new BigNumber(0))) {
+                balanceUpdateCommands.push([
+                  'hincrbyfloat',
+                  coin + ':balances',
+                  w,
+                  worker.balanceChange.toFixed(coinPrecision).toString(10)
+                ]);
+              }
+              if (worker.sent !== 0) {
+                workerPayoutsCommand.push(['hincrbyfloat', coin + ':payouts', w, worker.sent.toString(10)]);
+                totalPaid = totalPaid.plus(worker.sent);
+              }
+          
+            // update immature balances
+            if ((worker.immature || 0) > 0) {
+                immatureUpdateCommands.push(['hset', coin + ':immature', w, worker.immature]);
+            } else {
+                immatureUpdateCommands.push(['hset', coin + ':immature', w, 0]);
+            }
+                    
         }
 
 
@@ -916,7 +1042,11 @@ function SetupForPool(poolOptions, setupFinished) {
           logger.silly("PP> orphanMergeCommands = %s", orphanMergeCommands);
           finalRedisCommands = finalRedisCommands.concat(orphanMergeCommands);
         }
-
+        if (immatureUpdateCommands.length > 0)
+           logger.silly("PP> immatureUpdateCommands goes in redis");
+           logger.silly("PP> immatureUpdateCommands = %s", immatureUpdateCommands);
+           finalRedisCommands = finalRedisCommands.concat(immatureUpdateCommands);
+                    
         if (balanceUpdateCommands.length > 0) {
           logger.silly("PP> balanceUpdateCommands goes in redis");
           logger.silly("PP> balanceUpdateCommands = %s", balanceUpdateCommands);
@@ -1016,5 +1146,22 @@ function SetupForPool(poolOptions, setupFinished) {
     return address;
   };
 
+    /*var coinsToSatoshies = function(coins){
+        return Math.round(coins);
+    };*/
+    
+    function roundTo(n, digits) {	
+        if (digits === undefined) {
+            digits = 0;
+        }
+        var multiplicator = Math.pow(10, digits);
+        n = parseFloat((n * multiplicator).toFixed(11));
+        var test =(Math.round(n) / multiplicator);
+        return +(test.toFixed(digits));
+    }
+    
+    function coinsRound(number) {
+        return roundTo(number, coinPrecision);
+    }
 
 }
