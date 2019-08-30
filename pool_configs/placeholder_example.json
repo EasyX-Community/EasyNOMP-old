@@ -17,6 +17,8 @@
         "paymentInterval": 300,
         "minimumPayment": 0.25,
         "maxBlocksPerPayment": 10,
+        "minConf": 30,
+        "coinPrecision": 8,
         "daemon": {
             "host": "127.0.0.1",
             "port": 2200,

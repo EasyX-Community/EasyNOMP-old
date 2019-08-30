@@ -91,7 +91,7 @@ module.exports = function(portalConfig, poolConfigs) {
                         
                       if (w.startsWith(address)) {
                           
-                        console.log('>>>>BALANCES>>>>: ' + JSON.stringify(balances));
+//                        console.log('>>>>BALANCES>>>>: ' + JSON.stringify(balances));
                           
                         workers[w] = portalStats.stats.pools[pool].workers[w];
                         
@@ -106,7 +106,7 @@ module.exports = function(portalConfig, poolConfigs) {
                         workers[w].immature = (workers[w].immature || 0);
                         workers[w].paid = (workers[w].paid || 0);
 
-                        console.log('workers[w].immature: '+workers[w].immature);
+//                        console.log('workers[w].immature: '+workers[w].immature);
                                                          
                         totalHash += portalStats.stats.pools[pool].workers[w].hashrate;
                         networkSols = portalStats.stats.pools[pool].poolStats.networkSols;
