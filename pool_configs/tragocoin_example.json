@@ -16,6 +16,9 @@
         "schema": "PROP",
         "paymentInterval": 300,
         "minimumPayment": 0.25,
+        "maxBlocksPerPayment": 10,
+        "minConf": 30,
+        "coinPrecision": 8,
         "daemon": {
             "host": "192.168.1.20",
             "port": 2205,

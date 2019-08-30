@@ -252,27 +252,37 @@ $.getJSON('/api/worker_stats?' + _miner, function(data) {
 	if (document.hidden) return;
 	$.getJSON('/api/pool_stats', function(statData) {
 		addWorkerToTracker(statData, data, _miner, function(){
+			
+            
+            //alert("MS> Locating worker stats for: " + _miner);			
+			
 			var stats = getWorkerStats(_miner);
+			
 			statData = data;
+			
 			for (var w in statData.workers) {
 				_workerCount++;
 			}
+			
 			displayCharts();
 			rebuildWorkerDisplay();
 			updateStats();
 			
-        	var totalPaid = stats.paid || 0;
-        	var totalBal = stats.balance || 0;
-        	var totalImmature = stats.immature || 0;
+        	var totalPaid = statData.paid || 0;
+        	var totalBal = statData.balance || 0;
+        	var totalImmature = (statData.immature) || 0;
         	
-        	var luckDays = stats.luckDays || "unknown";
-        	/*alert('LD: ' + luckDays)*/
+        	//alert('immature: ' + totalImmature);
+        	
+        	var luckDays = statData.luckDays || "unknown";
 	
         	var SYMB = stats.symbol || "unknown symbol";
 
 			$('#total-paid-label').append(totalPaid.toFixed(8) + ' ' + SYMB);			
-			$('#total-immature-label').append(totalImmature.toFixed(8) + ' ' + SYMB);
+			
+			$('#total-immature-label').append(totalImmature.toFixed(8) + ' ' + SYMB);			
 			$('#total-balance-label').append(totalBal.toFixed(8) + ' ' + SYMB);
+			
 			$('#total-luckdays-label').append(luckDays);
 			
 		});

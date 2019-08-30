@@ -172,14 +172,21 @@ module.exports = function(portalConfig, poolConfigs) {
     var totalPaid = parseFloat(0);
     var totalImmature = parseFloat(0);
 
+//    logger.debug("STATS>BEGIN> STATS BEING CALCULATED...");
+
     async.each(_this.stats.pools, function(pool, pcb) {
       var coin = String(_this.stats.pools[pool.name].name);
+      
+//      client.hscan(coin + ':shares:roundCurrent', 0, "match", a + "*", "count", 1000, function(error, result) {pexacoin:blocksPending
+          
       // get all immature balances from address
-      client.hscan(coin + ':immature', 0, "match", a + "*", "count", 10000, function(error, pends) {
+      client.hscan(coin + ':immature', 0, "match", a + "*", "count", 10000, function(pendserr, pends) {
         // get all balances from address
-        client.hscan(coin + ':balances', 0, "match", a + "*", "count", 10000, function(error, bals) {
+        client.hscan(coin + ':balances', 0, "match", a + "*", "count", 10000, function(balserr, bals) {
           // get all payouts from address
-          client.hscan(coin + ':payouts', 0, "match", a + "*", "count", 10000, function(error, pays) {
+          client.hscan(coin + ':payouts', 0, "match", a + "*", "count", 10000, function(payserr, pays) {
+
+            logger.debug("STATS> pendserr: [%s] balserr: [%s] payserr: [%s]", pendserr, balserr, payserr);
 
             var workerName = "";
             var balAmount = 0;
@@ -208,6 +215,11 @@ module.exports = function(portalConfig, poolConfigs) {
                 totalHeld += balAmount;
               }
             }
+            
+            totalImmature = 0;            
+            
+//            logger.debug("STATS>PENDS> " + JSON.stringify(pends));            
+            
             for (var b in pends[1]) {
               if (Math.abs(b % 2) != 1) {
                 workerName = String(pends[1][b]);
@@ -229,12 +241,18 @@ module.exports = function(portalConfig, poolConfigs) {
             }
 
             pcb();
+
           });
+
         });
+
       });
+      
+
+
     }, function(err) {
       if (err) {
-        callback("There Was An Error Getting Balances!");
+        callback("STATS> There Was An Error Getting Balances!");
         return;
       }
 
@@ -289,7 +307,7 @@ module.exports = function(portalConfig, poolConfigs) {
 
       client.client.multi(redisCommands).exec(function(err, replies) {
         if (err) {
-          logger.error('Error with getting global stats, err = %s', JSON.stringify(err));
+          logger.error('STATS> Error with getting global stats, err = %s', JSON.stringify(err));
           callback(err);
         } else {
           for (var i = 0; i < replies.length; i += commandsPerCoin) {
@@ -356,7 +374,7 @@ module.exports = function(portalConfig, poolConfigs) {
       });
     }, function(err) {
       if (err) {
-        logger.error('Error getting all stats, err = %s', JSON.stringify(err));
+        logger.error('STATS> Error getting all stats, err = %s', JSON.stringify(err));
         callback();
         return;
       }
@@ -508,7 +526,7 @@ module.exports = function(portalConfig, poolConfigs) {
         ['zremrangebyscore', 'statHistory', '-inf', '(' + retentionTime]
       ]).exec(function(err, replies) {
         if (err)
-          logger.error('Error adding stats to historics, err = %s', JSON.stringify(err));
+          logger.error('STATS> Error adding stats to historics, err = %s', JSON.stringify(err));
       });
       callback();
     });
